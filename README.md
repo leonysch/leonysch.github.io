@@ -1,4 +1,4 @@
-# Taewook Kim's personal blog repository.
+# James Lam's personal blog repository.
 
 URL: [http://kitylam9.github.io](http://kitylam9.github.io)
 
