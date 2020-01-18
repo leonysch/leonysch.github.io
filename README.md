@@ -14,4 +14,3 @@ Basically, the original theme is licensed under a [Creative Commons Attribution-
 
 This blog has been built by modifying the original work: [Minimal Theme](http://orderedlist.github.com/minimal/).
 
-© 2018 [Taewook Kim](http://hcikim.github.io) ALL RIGHTS RESERVED
