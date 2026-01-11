@@ -55,7 +55,9 @@
             Award: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>,
             ExternalLink: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>,
             Building2: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>,
-            Users: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Users: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+            Layers: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+            Brain: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
         };
 
         const AcademicPortfolio = () => {
@@ -107,7 +109,7 @@
                                         <div className="mt-4 space-y-1 text-sm text-slate-600">
                                             <p className="font-medium text-slate-900">Ph.D. Candidate (Expected 2026)</p>
                                             <p><a href="https://ais.hkust.edu.hk/" target="_blank" className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2">Academy of Interdisciplinary Studies</a></p>
-                                            <p><a href="https://www.ust.hk/" target="_blank" className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2">HKUST</a></p>
+                                            <p><a href="https://www.ust.hk/" target="_blank" className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2">Hong Kong University of Science and Technology</a></p>
                                         </div>
 
                                         {/* Visiting Scholar Badge */}
@@ -116,10 +118,12 @@
                                                 <div className="w-4 h-4 text-blue-700 mt-1 shrink-0"><Icons.Landmark /></div>
                                                 <div>
                                                     <p className="text-xs font-semibold text-blue-700 uppercase">Visiting Scholar (2025)</p>
-                                                    <p className="text-sm text-slate-800 leading-tight mt-1">
-                                                        Leverhulme Centre for the Future of Intelligence (LCFI)
+                                                    <p className="text-sm text-slate-800 leading-tight mt-1 hover:text-blue-600">
+                                                        <a href="https://www.lcfi.ac.uk/" target="_blank" className="underline decoration-blue-200 underline-offset-2">Leverhulme Centre for the Future of Intelligence (LCFI)</a>
                                                     </p>
-                                                    <p className="text-xs text-slate-500 mt-0.5">University of Cambridge</p>
+                                                    <p className="text-xs text-slate-500 mt-0.5 hover:text-blue-600">
+                                                        <a href="https://www.cam.ac.uk/" target="_blank" className="underline decoration-slate-200 underline-offset-2">University of Cambridge</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,83 +191,136 @@
                                         <div className="space-y-8 animate-fade-in">
                                             <section>
                                                 <h2 className="text-2xl font-bold text-slate-900 mb-4">About Me</h2>
-                                                <p className="text-slate-700 leading-relaxed mb-4">
-                                                    I am a <strong>Technology Governance Scholar</strong> working on next‑generation digital ecosystems shaped by artificial intelligence, immersive technologies (XR), and large‑scale digital infrastructures. My focus is on governance at the intersection of technical systems and institutional arrangements.
+                                                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+                                                    <p>
+                                                        I am a <strong>Technology Governance Scholar</strong> with nearly a decade of frontline experience in the high-tech industry. I work on next‑generation digital ecosystems shaped by artificial intelligence, immersive technologies (XR), and large‑scale digital infrastructures.
+                                                    </p>
+                                                    <p className="mt-4">
+                                                        My focus is on governance at the intersection of technical systems and institutional arrangements. My research addresses a central question: <strong>how digitally mediated selves are constituted, coordinated, and held accountable.</strong> To this end, I develop an identity‑centric governance framework that integrates identity, interoperability, and accountability, as shown in my Doctoral Dissertation.
+                                                    </p>
+                                                </div>
+                                            </section>
+
+                                            <section className="bg-slate-50 rounded-lg p-5 border-l-4 border-blue-600">
+                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Doctoral Dissertation (Thesis Defended)</h3>
+                                                <p className="text-lg font-bold text-slate-900 italic">
+                                                    "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
                                                 </p>
-                                                <p className="text-slate-700 leading-relaxed mb-4">
-                                                    Currently a Ph.D. candidate at HKUST (Thesis Defended, Expected 2026), I am supervised by <a href="https://panhui.people.ust.hk" target="_blank" className="text-blue-600 hover:underline">Prof. Pan HUI</a> and <a href="https://isom.hkust.edu.hk/faculty-and-staff/directory/xuyan" target="_blank" className="text-blue-600 hover:underline">Prof. Yan XU</a>.
-                                                </p>
-                                                <p className="text-slate-700 leading-relaxed">
+                                                <p className="text-sm text-slate-600 mt-2">
                                                     My research addresses a central question: <strong>how digitally mediated selves are constituted, coordinated, and held accountable</strong>. To this end, I develop an identity‑centric governance framework that integrates identity, interoperability, and accountability.
                                                 </p>
                                             </section>
 
                                             <section className="grid md:grid-cols-2 gap-4">
-                                                <div className="bg-blue-50 p-5 rounded-lg border border-blue-100">
-                                                    <h3 className="font-bold text-blue-900 flex items-center mb-2">
-                                                        <div className="w-5 h-5 mr-2"><Icons.Award /></div>
-                                                        Key Achievement
-                                                    </h3>
-                                                    <p className="text-sm text-blue-800">
-                                                        My "Yang Model" for interoperability was officially adopted in the <strong>UKRI-supported report</strong> "UK input to Metaverse Interoperability & Standardisation" (2025).
-                                                    </p>
-                                                </div>
-                                                <div className="bg-amber-50 p-5 rounded-lg border border-amber-100">
-                                                    <h3 className="font-bold text-amber-900 flex items-center mb-2">
-                                                        <div className="w-5 h-5 mr-2"><Icons.Award /></div>
-                                                        Academic Recognition
-                                                    </h3>
-                                                    <p className="text-sm text-amber-800">
-                                                        Recipient of the <strong>Best Student Paper Award</strong> at the 24th ITS Biennial Conference; Lead Article in <em>Telecommunications Policy</em>.
-                                                    </p>
-                                                </div>
+                                                <a href="https://pureadmin.qub.ac.uk/ws/portalfiles/portal/656975059/UK_input_to_Metaverse_Interoperability_Standardisation.pdf" target="_blank" className="block group">
+                                                    <div className="bg-blue-50 p-5 rounded-lg border border-blue-100 h-full transition group-hover:border-blue-300 group-hover:shadow-sm">
+                                                        <h3 className="font-bold text-blue-900 flex items-center mb-2">
+                                                            <div className="w-5 h-5 mr-2"><Icons.Globe /></div>
+                                                            International Policy Uptake
+                                                        </h3>
+                                                        <p className="text-sm text-blue-800">
+                                                            The report <em>"UK Input to Metaverse Interoperability & Standardisation"</em> (2025) explicitly cites and adopts the three-layer interoperability model developed in my dissertation, referring to it as the <strong>"Yang Model"</strong>.
+                                                        </p>
+                                                        <div className="mt-2 text-xs text-blue-600 font-semibold flex items-center">
+                                                            View Report <div className="w-3 h-3 ml-1"><Icons.ExternalLink /></div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                
+                                                <a href="https://doi.org/10.1016/j.telpol.2025.102906" target="_blank" className="block group">
+                                                    <div className="bg-amber-50 p-5 rounded-lg border border-amber-100 h-full transition group-hover:border-amber-300 group-hover:shadow-sm">
+                                                        <h3 className="font-bold text-amber-900 flex items-center mb-2">
+                                                            <div className="w-5 h-5 mr-2"><Icons.Award /></div>
+                                                            Academic Recognition
+                                                        </h3>
+                                                        <p className="text-sm text-amber-800">
+                                                            Recipient of the <strong>Best Student Paper Award</strong> at the 24th ITS Biennial Conference; Lead Article in <em>Telecommunications Policy</em>, Issue 3, 2025.
+                                                        </p>
+                                                        <div className="mt-2 text-xs text-amber-700 font-semibold flex items-center">
+                                                            View Article <div className="w-3 h-3 ml-1"><Icons.ExternalLink /></div>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </section>
                                         </div>
                                     )}
 
-                                    {/* RESEARCH */}
+                                         {/* RESEARCH AGENDA */}
                                     {activeTab === 'research' && (
                                         <div className="space-y-8 animate-fade-in">
-                                            <section>
-                                                <h2 className="text-2xl font-bold text-slate-900 mb-6">Research Agenda</h2>
-                                                <p className="text-slate-700 mb-6">
-                                                    Methodologically, my research is grounded in conceptual modelling and interdisciplinary theory‑building. I use immersive and AI‑enabled digital ecosystems as analytically rich governance contexts.
+                                            <section className="border-b border-slate-100 pb-6">
+                                                <h2 className="text-2xl font-bold text-slate-900">Doctoral Dissertation</h2>
+                                                <p className="text-lg text-slate-600 italic mt-2">
+                                                    "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
                                                 </p>
-                                                
-                                                <div className="grid gap-6">
-                                                    <div className="flex gap-4 items-start">
-                                                        <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 font-bold text-xl">1</div>
-                                                        <div>
-                                                            <h3 className="text-lg font-bold text-slate-900">Identity as Governance Anchor</h3>
-                                                            <p className="text-slate-600 mt-1">
-                                                                I conceptualise digital identity not merely as authentication, but as a multidimensional unit mediating organizational control, risk exposure, and responsibility attribution.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div className="flex gap-4 items-start">
-                                                        <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 font-bold text-xl">2</div>
-                                                        <div>
-                                                            <h3 className="text-lg font-bold text-slate-900">Interoperability as Institutional Challenge</h3>
-                                                            <p className="text-slate-600 mt-1">
-                                                                I frame interoperability as a problem spanning infrastructure compatibility, cross‑platform navigation, and physical–virtual integration, bridging technical standards with institutional governance.
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                            </section>
 
-                                                    <div className="flex gap-4 items-start">
-                                                        <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 font-bold text-xl">3</div>
-                                                        <div>
-                                                            <h3 className="text-lg font-bold text-slate-900">Accountability in Hybrid Systems</h3>
-                                                            <p className="text-slate-600 mt-1">
-                                                                My work maps the "Risk–Responsibility–Remedy" pathway, designing implementable accountability tools that operate across technical architectures, social norms, and legal regulations.
-                                                            </p>
-                                                        </div>
+                                            {/* 1. Context & Problem */}
+                                            <section className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Context & Core Inquiry</h3>
+                                                <p className="text-slate-700 leading-relaxed mb-4">
+                                                    The metaverse is widely regarded as the next‑generation digital ecosystem. Yet governance agendas remain emergent. Against this backdrop, this dissertation establishes an <strong>identity‑centric normative starting point</strong> for anticipatory governance.
+                                                </p>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <div className="bg-white p-4 rounded border border-slate-100">
+                                                        <h4 className="font-semibold text-slate-900 text-sm mb-1">The Challenge</h4>
+                                                        <p className="text-xs text-slate-600">How embodied presence shifts risk attachment to identity, and how harms to the Digital Self can be translated into workable remedies.</p>
+                                                    </div>
+                                                    <div className="bg-white p-4 rounded border border-slate-100">
+                                                        <h4 className="font-semibold text-slate-900 text-sm mb-1">The Solution</h4>
+                                                        <p className="text-xs text-slate-600">Operationalizing the "Digital Self" as a governance unit that links to and extends beyond real‑world identity.</p>
                                                     </div>
                                                 </div>
                                             </section>
+
+                                            {/* 2. Three Clusters of Contributions */}
+                                            <section>
+                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">The Framework: Three Clusters of Contributions</h3>
+                                                <div className="grid md:grid-cols-3 gap-6">
+                                                    {/* Cluster 1 */}
+                                                    <div className="space-y-3">
+                                                        <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center">
+                                                            <Icons.Target />
+                                                        </div>
+                                                        <h4 className="font-bold text-slate-900">1. Mechanisms & Governance Units</h4>
+                                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                                            Uses <em>self-presence</em> to explain how immersive harm pathways render conventional governance insufficient. Conceptualizes <strong>metaverse identity</strong> as a four‑dimensional unit (representational, data, social, economic) to calibrate protection and innovation.
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Cluster 2 */}
+                                                    <div className="space-y-3">
+                                                        <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                                                            <Icons.Network />
+                                                        </div>
+                                                        <h4 className="font-bold text-slate-900">2. Interoperability & Ecosystems</h4>
+                                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                                            Reconceptualizes interoperability as <strong>identity continuity</strong>. Develops a "normative framework—evidence map—action agenda" paradigm that links identity-anchored constraints to technical trajectories.
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Cluster 3 */}
+                                                    <div className="space-y-3">
+                                                        <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center">
+                                                            <Icons.ShieldCheck />
+                                                        </div>
+                                                        <h4 className="font-bold text-slate-900">3. Accountability & Tools</h4>
+                                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                                            Constructs an <strong>identity-centric accountability pathway</strong>. Converts theory into a practical "toolbox" for policymakers and designers, connecting incident-level harms to evidentiary standards and remedies.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            {/* 3. Conclusion */}
+                                            <section className="border-t border-slate-100 pt-6">
+                                                <p className="text-slate-700 text-sm italic">
+                                                    "Placing identity at the core of metaverse design and governance constitutes a critical precondition for the metaverse to plausibly evolve into shared socio‑technical infrastructure that supports human well‑being."
+                                                </p>
+                                            </section>
                                         </div>
                                     )}
+
 
                                     {/* PUBLICATIONS */}
                                     {activeTab === 'publications' && (
@@ -396,13 +453,13 @@
                                     {activeTab === 'experience' && (
                                         <div className="space-y-10 animate-fade-in">
                                             
-                                            {/* Academic Exchange */}
+                                            {/* Academic Exchange & Service */}
                                             <section>
                                                 <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
                                                     <div className="p-1.5 bg-indigo-100 rounded-md text-indigo-700 mr-3"><Icons.Landmark /></div>
                                                     Academic Exchange & Service
                                                 </h2>
-                                                <div className="space-y-4 pl-2">
+                                                <div className="space-y-6 pl-2">
                                                     <div className="border-l-2 border-slate-200 pl-4 py-1">
                                                         <h3 className="font-semibold text-slate-900">Leverhulme Centre for the Future of Intelligence (LCFI)</h3>
                                                         <p className="text-sm text-slate-600">University of Cambridge</p>
@@ -411,10 +468,30 @@
                                                         </p>
                                                     </div>
                                                     <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900">Journal Service</h3>
-                                                        <p className="text-slate-700 mt-1 text-sm">
-                                                            Editorial support for <a href="https://www.mdpi.com/journal/industries" target="_blank" className="text-blue-600 hover:underline">Industries</a> and <a href="https://www.mdpi.com/journal/aieng" target="_blank" className="text-blue-600 hover:underline">AI for Engineering</a>.
-                                                        </p>
+                                                        <h3 className="font-semibold text-slate-900">Postgraduate Student Representative</h3>
+                                                        <p className="text-sm text-slate-600">Committee on Postgraduate Studies, HKUST | Jan – Dec 2024</p>
+                                                        <ul className="text-slate-700 mt-2 text-sm list-disc pl-4 space-y-1">
+                                                            <li>Reviewed proposals for new postgraduate programmes (e.g., MSc in AI and Entrepreneurship) and curriculum revisions.</li>
+                                                            <li>Provided recommendations on academic standards, regulatory compliance, and student rights and interests.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            {/* Academic Publishing */}
+                                            <section>
+                                                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                                                    <div className="p-1.5 bg-blue-100 rounded-md text-blue-700 mr-3"><Icons.Book /></div>
+                                                    Academic Publishing Experience
+                                                </h2>
+                                                <div className="space-y-4 pl-2">
+                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
+                                                        <h3 className="font-semibold text-slate-900">Part-time Academic Publishing Editor</h3>
+                                                        <p className="text-sm text-slate-600">Multidisciplinary Digital Publishing Institute (MDPI), Switzerland | Nov – Dec 2025</p>
+                                                        <ul className="text-slate-700 mt-2 text-sm list-disc pl-4 space-y-1">
+                                                            <li>Supported the preparatory development of international journals including <em>AI for Society</em> (in preparation), <em>AI for Engineering</em>, and <em>Industries</em>.</li>
+                                                            <li>Contributed to journal scope development, editorial board formation support, and coordination of academic directions.</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </section>
@@ -486,304 +563,4 @@
         root.render(<AcademicPortfolio />);
     </script>
 </body>
-</html>
-
-
-<!--revise to v1.0 2026-01-11 -->		
-<!--<!doctype html>
-<html>
-  <head>
-
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Yang Liang(Leon) | Metaverse, Metaverse Identity, Metaverse Interoperability, Governance and Regulation, Privacy and Security, Fairness and Ethics</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width">
-     <!-- Google Tag Manager -->
-     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-55VC24T');</script>
-    <!-- End Google Tag Manager --> 
-  </head>
-
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55VC24T"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="wrapper">
-      <header>
-        <h1>Yang Liang (Leon) </h1> 
-        <p>Ph. D candidate<br>
-        <a href="https://ais.hkust.edu.hk/" target="_blank">Academy of Interdisciplinary Studies</a><br>
-        <a href="https://www.ust.hk/" target="_blank">HKUST</a>
-        </p>
-        <p class="view">
-          <a href="https://scholar.google.com/citations?user=UjuKCPcAAAAJ&hl=zh-CN" target="_blank">Google Scholar<br></a>
-		  <a href="https://www.linkedin.com/in/leonyang2059/" target="_blank">Linkedin<br></a>
-          <a href="https://ust-hk.academia.edu/LiangYang" target="_blank">Academia<br></a>
-		  <a href="https://www.researchgate.net/profile/Liang-Yang-71?ev=hdr_xprf" target="_blank">Researchgate<br></a>
-        </p>
-		 <p class="view">
-          <a href="../data/ky-CV.pdf" target="_blank">Curriculum Vitae (PDF)<br></a>
-            <small><em>Last Updated: October 1, 2025</em></small>
-        </p>
-        <p><b>Contact:</b> lyangbl&lt;at&gt;connect.ust.hk</p><br> 
- -->		
-        
- <!--  
-        <a href="https://www.ust.hk/" target="_blank">
-          <img src="./data/logo-hkust.png" style='width:90%;' border="0" alt="Null" align="top">
-        </a><br>
-        <br>
- -->		
-        
- <!--          
-		</header>
-      <section>
-    <h2>Leon Yang (Liang Yang)</h2>
-                
-        <p> Leon Yang (Liang Yang) is a <strong>Technology Governance Scholar</strong> working on next‑generation digital ecosystems shaped by artificial intelligence, immersive technologies (XR), and large‑scale 
-		digital infrastructures, with a focus on governance at the intersection of technical systems and institutional arrangements. He is a PhD researcher at the <a href="https://ais.hkust.edu.hk/" target="_blank">Academy of Interdisciplinary Studies</a> 
-		at <a href="https://www.ust.hk/" target="_blank">Hong Kong University of Science and Technology (HKUST)</a>. His doctoral dissertation has been successfully defended, and he is expected to receive his PhD degree in 2026. He is supervised by
-		<a href="https://panhui.people.ust.hk" target="_blank">Prof. Pan HUI</a> and <a href="https://isom.hkust.edu.hk/faculty-and-staff/directory/xuyan" target="_blank">Prof. Yan XU</a>. </p>
-			
-		<p> His research addresses a central question in contemporary technology governance: <strong>how digitally mediated selves are constituted, coordinated, and held accountable as organisational and governance units</strong> across interconnected 
-		platforms, infrastructures, and institutions. To this end, he develops an <strong>identity‑centric governance framework</strong> that analytically integrates <strong>identity</strong>, <strong>interoperability</strong>, and <strong>accountability</strong> 
-		as mutually constitutive dimensions of next‑generation digital ecosystems.</p>
-
-	<h2>Research Agenda</h2>
-                
-        <p> <strong>Methodologically, Leon’s research is grounded in conceptual modelling and interdisciplinary theory‑building</strong>, using immersive and AI‑enabled digital ecosystems as analytically rich governance contexts rather than technology‑specific ends. 
-		His work contributes to technology governance, digital governance, and AI governance by developing theory‑driven yet institutionally actionable frameworks.</p>
-			
-		<p> <strong>Identity as a governance anchor.</strong> 
-		Leon conceptualises digital identity not merely as authentication or representation, but as a multidimensional governance unit through which <strong>organisational control, risk exposure, and responsibility attribution are mediated</strong>. Drawing on philosophy, 
-		law, sociology, and information systems, his work examines how immersive interaction, self‑presence, and embodied multimodal engagement reshape agency and risk. This line of research establishes identity as a normative and analytical starting point for 
-		governing avatar‑based harms, data exploitation, and accountability gaps in hybrid physical–digital environments.
-		</p>
-
-		<p> <strong>Interoperability as a digital ecosystem challenge.</strong> 
-		Moving beyond narrow technical accounts, his work frames interoperability as a problem spanning <strong>infrastructure compatibility, cross‑platform navigation, and physical–virtual integration</strong>, addressing a long‑standing gap between technical standards research 
-		and institutional governance analysis. By combining standards studies with governance theory, he examines how fragmented architectures, coordination failures, and regulatory boundaries shape user mobility, identity continuity, and asset portability across platforms.
-		</p>
-
-		<p> <strong>Accountability across hybrid systems.</strong>
-		At the governance level, his research develops a structured mapping between <strong>risk, responsibility, and remedy</strong> across technical architectures and infrastructures, social norms, market mechanisms, and legal regulations. This approach provides a coherent analytical 
-		foundation for understanding accountability deficits in emerging digital ecosystems and for designing implementable governance tools that operate across platforms, organisations, and jurisdictions.
-		</p>
-
-		<p> 
-		Together, this research agenda advances a theory‑led understanding of how emerging digital systems are governed, while remaining attentive to institutional feasibility and real‑world governance constraints.
-		</p>
- -->		
-        
- <!--  
-<h2>Academic Publications</h2> 
-	<p>[c.4]  <a href="https://doi.org/10.1016/j.telpol.2025.102906" target="_blank"> 
-	Framing metaverse identity: A multidimensional framework for governing digital selves. </a>
-	     <br> Liang Yang, Yan Xu, Pan Hui<br>
-	      <i style = "font-size: 12px"> Telecommunications Policy, Volume 49, Issue 3. </i>  
-		 <br> <i style = "font-size: 12px"><b>Lead article in 
-			 <a href="https://www.sciencedirect.com/journal/telecommunications-policy/vol/49/issue/3" target="_blank">this issue</a>. 
-			 <a href="https://www.sciencedirect.com/science/article/pii/S0308596125000035?via%3Dihub" target="_blank">An earlier version of this work</a> was presented at the 24th Biennial Conference of 
-			 the <a href="https://itsworld.org" target="_blank">International Telecommunications Society (ITS)</a>, where it received the <a href="https://bm.hkust.edu.hk/news/2024/11/metaverse-study-clinches-first-prize-award" target="_blank"> First Prize Award</a>.</i></b>
-         <br>Introduces a governance‑oriented conceptualisation of metaverse identity and proposes two principles—Equivalence & Alignment, and Fusion & Expansiveness—to address accountability, harm, and interoperability in immersive systems. <br></p>
-  
-	<p>[c.3]  <a href="https://ieeexplore.ieee.org/document/10979319" target="_blank"> 
-	Interoperability of the Metaverse: A Digital Ecosystem Perspective Review.  </a>
-	     <br>  Liang Yang, Shi-Ting Ni, Yuyang Wang, Ao Yu, Jyh-An Lee and Pan Hui<br>
-	     <i style = "font-size: 12px"> IEEE Engineering Management Review, Volume 53, Issue 3.</i>
-		 <br> <i style="font-size: 12px"> <b> Featured on <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11037581" target="_blank">Special Issue cover</a>.</b> </i>
-		<br>Develops a “three-layer × four-dimension” analytical model for metaverse interoperability and outlines future research and governance roadmaps.<br></p>
- 
-	<p>[c.2]  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4665569" target="_blank">
-		  Legal Implications of Self-presence in the Metaverse. </a>
-          <br>Jyh-An Lee*, Liang Yang*, Pan Hui (*Co-first Author)<br> 
-          <i style = "font-size: 12px">Media & Arts Law Review, Volume 25, Issue 4.</i>
-          <br> <i style="font-size: 12px"> <b>The article was first presented at the <a href="https://webapp3.law.cuhk.edu.hk/conf/20230314/" target="_blank">Metaverse Law Conference</a> and was one of only three conference papers subsequently peer-reviewed for publication.</b></i>
-          <br>Examines avatar‑based harms through the lens of self‑presence and applies a multi‑modal governance framework to identify short‑ and long‑term regulatory levers. <br></p>
-
-		  
-	<p>[c.1]  <a href="https://dl.acm.org/doi/pdf/10.1145/3551626.3564936" target="_blank"> 
-                 Human-Avatar Interaction in Metaverse: Framework for Full-body Interaction</a>
-          <br>Kit-Yung LAM, Yang Liang, Ahmad Alhilal, Lik-Hang LEE, Gareth Tyson and Pan HUI<br> 
-          <i style = "font-size: 12px">ACM Multimedia Asia 2022(MM Asia 2022). Tokyo, Japan. </i> 
-	    <br>Proposes a scalable framework for real‑time full‑body human‑avatar interaction in shared virtual environments./p>	
-	   </p>
- -->		
-        
- <!--  	
-<h2>Policy & Standardisation Impact</h2>
-                
-        <p> The following engagements reflect the <strong>downstream uptake of Leon’s doctoral research</strong> in policy and 
-		standardisation contexts. His interoperability framework has been cited and adopted as the <strong>“Yang Model”</strong> in <a href="https:/pureadmin.qub.ac.uk/ws/portalfiles/portal/656975059/UK_input_to_Metaverse_Interoperability_Standardisation.pdf" target="_blank">UK Input to Metaverse Interoperability & Standardisation</a>, 
-		a deliverable of the UKRI‑supported project Shaping the Metaverse (Phase II) led by Queen’s University Belfast.</p>
-			
-		<p> The model is used as an analytical tool to map standardisation bodies, working groups, and technical roadmaps within the Metaverse Standards Forum. Its adoption reflects its ability to translate fragmented technical and institutional debates 
-		on interoperability into a <strong>coherent and analytically tractable governance structure</strong>. </p>
-
-		<p> Beyond standardisation, Leon’s research has also informed international governance and law-enforcement discussions. Insights from expert-level discussions on <b>“Metaverse: New Frontier of Policing”</b> at the <a href="https://interpol.cventevents.com/event/8b10df10-268c-40b3-a57b-340502c9de20/summary" target="_blank">INTERPOL Police Science Congress</a> 
-		were incorporated into INTERPOL’s official report <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.interpol.int/content/download/20828/file/Metaverse%2520-%2520a%2520law%2520enforcement%2520perspective.pdf&ved=2ahUKEwilr8DNrOyLAxW1UkEAHdo9Ad0QFnoECBMQAQ&usg=AOvVaw0m0Bw5elAjM63IFdFtNPMI" target="_blank">"Metaverse - A Law Enforcement Perspective(2024)."</a> </p>
-
-		<p> Leon has also contributed to industry‑oriented policy research on emerging digital ecosystems. He participated in research and drafting for <a href="http://www.metasinan.com/reporter/detail?news_id=MQjBQDxS" target="_blank">Metaverse Development Research Report 2.0</a> and 
-			<a href="http://www.metasinan.com/reporter/detail?news_id=MQzBIDyS" target="_blank">Research Report 3.0</a>, led by the <a href="https://www.tsjc.tsinghua.edu.cn/en/" target="_blank">School of Journalism and Communication</a>, <a href="https://www.tsinghua.edu.cn/en/" target="_blank">Tsinghua University</a>, with a focus on metaverse industry development. 
-		The reports received wide circulation and public discussion following publication.</p>
-
-<h2>Academic Exchange & Service (Selected)</h2>
-                
-		<p> Leon has engaged in academic research exchange with the <a href="https://www.lcfi.ac.uk" target="_blank">Leverhulme Centre for the Future of Intelligence</a>, University of Cambridge, focusing on AI and metaverse ethics, responsibility, and governance. 
-			He was an member of an expert discussion group on <a href="https://berggruen.org/news/imaginaries-of-immortality-in-the-age-of-ai-china" target="_blank"><i>“The Imaginaries of Immortality in the Age of AI,”</i></a> jointly organised by the Leverhulme Centre for the Future of Intelligence (University of Cambridge) 
-			and the <a href="https://www.berggruen.org.cn" target="_blank">Berggruen Institute</a> (Peking University).</p>	
-		
-		<p> His academic service includes editorial and publication support for international journals such as in <a href="https://www.mdpi.com/journal/industries" target="_blank">Industries</a> and <a href="https://www.mdpi.com/journal/aieng" target="_blank">AI for Engineering</a>, as well as graduate student representation on university‑level postgraduate committees.</p>
- -->		
-        
- <!--  
-
-<h2>Research‑Informed Practice & Professional Background</h2>
-        <p> Leon’s academic work is grounded in extensive engagement with applied research, large‑scale digital infrastructure, and government‑funded technology development. From 2022 to 2024, he participated in the design, proposal development, and feasibility argumentation of a laboratory‑led research project on <strong>3D virtual scenes and digital humans</strong>, 
-			conducted at the <a href="https://infh.hkust-gz.edu.cn/blog/2022/08/30/mc2-center-for-metaverse-and-computational-creativity/" target="_blank">MC² Lab, HKUST (Guangzhou)</a>. The project was approved under the <strong>Guangzhou Nansha District Key Science and Technology R&amp;D Programme</strong>, with total funding of <strong>RMB 5 million</strong>. 
-			In parallel, he was also involved in applied research and experimentation related to <a href="https://seng.hkust.edu.hk/news/20220728/hkust-launch-worlds-first-twin-campuses-metaverse" target="_blank"><strong>MetaHKUST</strong></a>, a flagship immersive campus initiative of HKUST, which explores digital twin campuses, virtual learning environments, and embodied interaction in institutional settings.</p>
-		
-		<p> Before entering academia, Leon accumulated over a decade of professional experience spanning large‑scale digital infrastructure, cross‑border technology collaboration, and innovation policy implementation. He began his career at Huawei, where he worked on the planning, construction, and operation of ICT infrastructure, including 4G networks and data centres, under diverse regulatory and 
-			organisational conditions in China and West Africa. He later co‑founded an innovation‑focused venture under China’s “Mass Entrepreneurship and Innovation” policy agenda and subsequently held senior roles in China–US technology collaboration projects involving XR and digital simulation technologies.</p>
-	    
-		<p> These experiences shaped his sensitivity to how <strong>governance failures emerge from misalignments between technical architectures, organisational incentives, and institutional constraints</strong>—a concern that runs throughout his academic work and informs his emphasis on system‑aware and implementable governance frameworks.</p>
-
--->			  
-
-<!-- 	2026.01.11 Hide 
-        <figure>
-            <img src="./data/s2s.png" style="width:100%;" border="0" alt="Scope visualization of metaverse interoperability" align="bottom">
-            <figcaption style="font-size: 0.9em; text-align: center; margin-top: 8px; color: gray;">
-                <a href="https://ieeexplore.ieee.org/document/10979319" target="_blank"> Scope Visualization of Metaverse Interoperability— Proposed Framework.</a>
-            </figcaption>
-        </figure>
-		  
-         <p>Before academia, Leon gained over a decade of industry experience. He began his professional career at <a href="https://www.huawei.com/en/" target="_blank">HUAWEI</a>, 
-			 where he was responsible for managing regional service operations valued at ten million dollars, including network construction and operation services, maintenance, 
-			 training, and consulting services. He then spent two years working in and contributing to the startup incubation sector, followed by his involvement in a collaboration 
-			 between <a href="https://www.cmhk.com/en/" target="_blank">China Merchants Group</a> and <a href="https://eonreality.com" target="_blank">EON Reality</a>. In this role, 
-			 he led the establishment and operations of <a href="https://eonreality.com/eon-reality-inaugurates-first-interactive-digital-center-china-china-merchants-economic-technological-development-zone/" target="_blank">
-				 China’s first Interactive Digital Center and AVR Innovation Academy</a>. He has also served since 2014 as an external consultant for <a href="https://www.mdpi.com" target="_blank">MDPI AG</a>, 
-			 a Switzerland-based academic publishing group. These experiences have equipped him with a unique combination of theoretical insight, practical expertise, and a global 
-			 perspective—driving his commitment to advancing <b>human-centered and sustainable innovation</b> in AI and the Metaverse.</p>  
-          <br>
-        
-        <br>
-        <hr>
-        <br>
-
-	      
-        <h2>Academic Activities</h2>
-	<li> 
-		2025: Participated as an expert discussion group member in the conference <a href="https://berggruen.org/news/imaginaries-of-immortality-in-the-age-of-ai-china" target="_blank"><i>“The Imaginaries of Immortality in the Age of AI”</i></a>, 
-        jointly organized by the Leverhulme Centre for the Future of Intelligence (University of Cambridge), the <a href="https://www.berggruen.org.cn" target="_blank">Berggruen Institute</a> (Peking University), in April 2025.  
-    </li>
-	<li>
-		2025: Academic visit to the <a href="https://www.lcfi.ac.uk" target="_blank">Leverhulme Centre for the Future of Intelligence</a>, University of Cambridge, with in-depth exchanges on cutting-edge topics with scholars in AI/Metaverse ethics and governance.  
-    </li>
-	<li>
-	  2024: Presented the preliminary draft of the <a href="https://www.sciencedirect.com/science/article/pii/S0308596125000035?via%3Dihub" target="_blank">Metaverse Identity </a> paper
-		at the <a href="https://itsworld.org" target="_blank">International Telecommunications Society (ITS)</a> 24th Biennial Conference, held in Seoul, Korea, from June 23–26, 2024. 
-		<a href="https://bm.hkust.edu.hk/news/2024/11/metaverse-study-clinches-first-prize-award" target="_blank"> Awarded First Prize Award</a>.
-        </li>
-	<li>
-          2023: Attended the <a href="https://interpol.cventevents.com/event/8b10df10-268c-40b3-a57b-340502c9de20/summary" target="_blank">INTERPOL Police Science Congress</a> held in Singapore
-		on 8–9 June 2023 and participated in the topic discussion "Metaverse: New Frontier of Policing." The outcomes of the discussion were included in INTERPOL's January 2024 report, 
-		<a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.interpol.int/content/download/20828/file/Metaverse%2520-%2520a%2520law%2520enforcement%2520perspective.pdf&ved=2ahUKEwilr8DNrOyLAxW1UkEAHdo9Ad0QFnoECBMQAQ&usg=AOvVaw0m0Bw5elAjM63IFdFtNPMI" target="_blank">"Metaverse - A Law Enforcement Perspective."</a>
-        </li>
-	<li>
-          2023: Co-presented the preliminary draft of <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4665569" target="_blank">
-		 Legal Implications of Self-Presence</a> paper at the <a href="https://webapp3.law.cuhk.edu.hk/conf/20230314/" target="_blank">Metaverse Law Conference</a> organized 
-		by <a href="https://www.law.cuhk.edu.hk" target="_blank">Faculty of Law, The Chinese University of Hong Kong</a>, on March 14, 2023. The paper was one of only three conference presented papers 
-		subsequently published in the <a href="https://law.unimelb.edu.au/centres/mclrn/research/publications/malr" target="_blank">Media & Arts Law Review</a>.
-        </li>
-        <li>
-          2022: Jointly presented the <a href="https://dl.acm.org/doi/pdf/10.1145/3551626.3564936" target="_blank"> Human-Avatar Full-body Interaction</a> paper along 
-		with a live demonstration of the system at <a href="https://www.mmasia2022.org" target="_blank">ACM MULTIMEDIA ASIA 2022</a>, held in Tokyo, Japan, from December 13-16, 2022.
-        </li>
-        <li >
-          2022: Contributed to the research and writing of <a href="http://www.metasinan.com/reporter/detail?news_id=MQjBQDxS" target="_blank">Metaverse Development Research Report 2.0</a>
-		(launched in January 2022) and <a href="http://www.metasinan.com/reporter/detail?news_id=MQzBIDyS" target="_blank">Metaverse Development Research Report 3.0</a> (launched in November 2022), 
-		which led by the <a href="https://www.tsjc.tsinghua.edu.cn/en/" target="_blank">School of Journalism and Communication</a>, <a href="https://www.tsinghua.edu.cn/en/" target="_blank">Tsinghua University</a>, 
-		and garnered widespread attention within China's industry sector.
-        </li> <li >
-          2022: Contributed to the <a href="https://hkust.edu.hk/news/research-and-innovation/hkust-launch-worlds-first-twin-campuses-metaverse" target="_blank">MetaHKUST</a> project, 
-		which brings two HKUST campuses (<a href="https://hkustcareers.hkust.edu.hk/About-HKUST/About-Clear-Water-Bay-Campus" target="_blank">Clear Water Bay</a> and <a href="https://www.hkust-gz.edu.cn" target="_blank">Guangzhou</a>) 
-		together and consolidate the real and virtual experience in one platform. It is receiving international press coverage and has garnered 
-		international recognition for pioneering metaverse applications in education.
-        </li><br>
-        
-        <br>
-        <hr>
-        <br>
--->	
-
-<!--
-	        <h2>University Service, Teaching, and Mentoring</h2>
-	 <li>
-        2024.01-12 <b>Postgraduate Representative of <a href="https://ais.hkust.edu.hk" target="_blank">AIS</b></a>, <a href="https://ccss.ust.hk/senate/committee-postgraduate-studies" target="_blank">Committee on Postgraduate Studies</a>, HKUST<br>
-        Participated in committee discussions and reviewed proposals for emerging postgraduate programs, such as the <a href="https://seng.hkust.edu.hk/academics/taught-postgraduate/msc-aie" target="_blank">MSc in AI and Entrepreneurship</a> 
-	      and <a href="https://amc.hkust.edu.hk/course.php?cid=3&id=1" target="_blank">MPhil / PhD in Arts and Machine Creativity</a>, as well 
-	      as adjustments to existing programs. Gained insights into the <i>university's top-down approach</i> to <i>quality control</i>, including but limited to <i>academic standards</i>, <i>legal compliance</i>, and <i>student protection</i>. Provided feedback drawing from 
-	      professional management experience and a postgraduate perspective.	   
-        </li>
-	      <li>
-        2022-2024 <b>Collaboration Assistant</b>, <a href="https://mc2-lab-hkust.netlify.app/#" target="_blank">MC² Lab</a>, HKUST<br>
-        Assisted Prof. Pan Hui in advancing Metaverse industrialization as a collaboration assistant and research center representative at MC² Lab, participating in major events such as 
-		the <a href="http://www.gzns.gov.cn/zwgk/tzgg/content/mpost_8832937.html" target="_blank">World Conference on VR Industry (2023)</a> and fostering partnerships with leading enterprises like <a href="http://www.tec.crrczic.cc/en/1400.html" target="_blank">CRRCZIC</a> corporation.
-</li>
-	      
-	<li>
-	2023.02-06 <b>Teaching Assistant</b>, <a href="https://vprd.hkust.edu.hk/research-focus/design-thinking-entrepreneurship" target="_blank">UCMP 6030 Cross-disciplinary Design Thinking</a>, HKUST_GZ<br>
-       Supported a postgraduate course with <i>100+ students</i>, managing logistics, grading, and <i>leading project management tutorials</i>. Provided practical insights to improve students’ design thinking, stakeholder research, and project outcomes.
-	</li>
-	<li>
-        2022.09-12 <b>Teaching Assistant</b>, <a href="https://prog-crs.hkust.edu.hk/pgcourse/2021-22/IIMP" target="_blank">IIMP 6030 Cross-disciplinary Design Thinking</a>, HKUST<br>
-       Guided <i>11 students</i> through user-centered design processes, from team formation to prototyping. Facilitated stakeholder engagement, user feedback analysis, and iterative development to enhance project success.
-        </li>
-	<li>
-        2022.07-12 <b>Team Member</b>, 3D Virtual Scenes and Digital Humans Project, <a href="https://mc2-lab-hkust.netlify.app/#" target="_blank">MC² Lab</a>, HKUST<br>
-    Contributed to the <i>3D Virtual Scenes and Digital Humans</i> research project (Project Code: 2022ZD012), which secured a 5 million RMB grant 
-		under <a href="http://www.gzns.gov.cn/zwgk/tzgg/content/mpost_8832937.html" target="_blank">Guangdong Province's 2022 Nansha District Key Technology R&D Program</a>.
-        </li>
-	 <li>
-        2018–2020 <b>Initiator</b>, <a href="https://www.cmzd.com/xwzx/info_itemid_1539.html" target="_blank">China AVR Spark Program，AVR Innovation Academy</a> <br> 
-        Founded China's first international AR/VR talent cooperation program, conducting technology education, application demos, and innovation collaborations at 15+ universities in China, 
-		 including Tsinghua, Shanghai Jiao Tong, Xiamen Universtity, etc.
-        </li>
-	<li>
-        2018.01-06 <b>Industry Mentor</b>, 2018 International FinTec Competition，CUHK (SZ) <br>
-         Guided the Visionary Medical Technology team as the mentor, supporting their development of the program "VR-Assisted Diagnostic System for Medical Imaging," which ultimately <a href="https://sfi.cuhk.edu.cn/zh-hans/show-51-133.html" target="_blank">won the championship</a>.
-        </li>
-      
-        <br>
-        <hr>
-        <br>
- 
--->	      
-  <!--  <h2>Acedemic Service</h2>
-        <b>Peer Review</b>
-        <li>
-         
-        </li>
-        <br>
-
-      </section>-->
-      <footer>
-        <p>
-          <!-- <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a><br></small> -->
-          <small>&copy; 2025 <a href="https://leonysch.github.io" target="_blank">Leon YL</a> ALL RIGHTS RESERVED</small>
-        </p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
 </html>
