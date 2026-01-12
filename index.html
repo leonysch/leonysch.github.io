@@ -60,7 +60,8 @@
             Brain: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>,
             Target: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
             Network: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>,
-            ShieldCheck: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            ShieldCheck: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>,
+            ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         };
 
         const AcademicPortfolio = () => {
@@ -285,36 +286,76 @@
                                                 <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">The Framework: Three Clusters of Contributions</h3>
                                                 <div className="grid md:grid-cols-3 gap-6">
                                                     {/* Cluster 1 */}
-                                                    <div className="space-y-3">
-                                                        <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center">
-                                                            <Icons.Target />
+                                                    <div className="flex flex-col h-full">
+                                                        <div className="space-y-3 flex-grow">
+                                                            <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center">
+                                                                <Icons.Target />
+                                                            </div>
+                                                            <h4 className="font-bold text-slate-900">1. Mechanisms & Governance Units</h4>
+                                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                                                Uses <em>self-presence</em> to explain how immersive harm pathways render conventional governance insufficient. Conceptualizes <strong>metaverse identity</strong> as a four‑dimensional unit (representational, data, social, economic) to calibrate protection and innovation.
+                                                            </p>
                                                         </div>
-                                                        <h4 className="font-bold text-slate-900">1. Mechanisms & Governance Units</h4>
-                                                        <p className="text-sm text-slate-600 leading-relaxed">
-                                                            Uses <em>self-presence</em> to explain how immersive harm pathways render conventional governance insufficient. Conceptualizes <strong>metaverse identity</strong> as a four‑dimensional unit (representational, data, social, economic) to calibrate protection and innovation.
-                                                        </p>
+                                                        <div className="mt-4 pt-4 border-t border-slate-100">
+                                                            <button 
+                                                                onClick={() => setActiveTab('publications')}
+                                                                className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center transition-colors group"
+                                                            >
+                                                                Related Publication (Identity Framework)
+                                                                <span className="ml-1 group-hover:translate-x-0.5 transition-transform"><Icons.ArrowRight /></span>
+                                                            </button>
+                                                        </div>
                                                     </div>
 
                                                     {/* Cluster 2 */}
-                                                    <div className="space-y-3">
-                                                        <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
-                                                            <Icons.Network />
+                                                    <div className="flex flex-col h-full">
+                                                        <div className="space-y-3 flex-grow">
+                                                            <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                                                                <Icons.Network />
+                                                            </div>
+                                                            <h4 className="font-bold text-slate-900">2. Interoperability & Ecosystems</h4>
+                                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                                                Reconceptualizes interoperability as <strong>identity continuity</strong>. Develops a "normative framework—evidence map—action agenda" paradigm that links identity-anchored constraints to technical trajectories.
+                                                            </p>
                                                         </div>
-                                                        <h4 className="font-bold text-slate-900">2. Interoperability & Ecosystems</h4>
-                                                        <p className="text-sm text-slate-600 leading-relaxed">
-                                                            Reconceptualizes interoperability as <strong>identity continuity</strong>. Develops a "normative framework—evidence map—action agenda" paradigm that links identity-anchored constraints to technical trajectories.
-                                                        </p>
+                                                        <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
+                                                            <button 
+                                                                onClick={() => setActiveTab('publications')}
+                                                                className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center transition-colors group"
+                                                            >
+                                                                Related Publication (Interoperability)
+                                                                <span className="ml-1 group-hover:translate-x-0.5 transition-transform"><Icons.ArrowRight /></span>
+                                                            </button>
+                                                            <button 
+                                                                onClick={() => setActiveTab('impact')}
+                                                                className="text-xs font-semibold text-amber-600 hover:text-amber-800 flex items-center transition-colors group"
+                                                            >
+                                                                Policy Impact (The Yang Model)
+                                                                <span className="ml-1 group-hover:translate-x-0.5 transition-transform"><Icons.ArrowRight /></span>
+                                                            </button>
+                                                        </div>
                                                     </div>
 
                                                     {/* Cluster 3 */}
-                                                    <div className="space-y-3">
-                                                        <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center">
-                                                            <Icons.ShieldCheck />
+                                                    <div className="flex flex-col h-full">
+                                                        <div className="space-y-3 flex-grow">
+                                                            <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center">
+                                                                <Icons.ShieldCheck />
+                                                            </div>
+                                                            <h4 className="font-bold text-slate-900">3. Accountability & Tools</h4>
+                                                            <p className="text-sm text-slate-600 leading-relaxed">
+                                                                Constructs an <strong>identity-centric accountability pathway</strong>. Converts theory into a practical "toolbox" for policymakers and designers, connecting incident-level harms to evidentiary standards and remedies.
+                                                            </p>
                                                         </div>
-                                                        <h4 className="font-bold text-slate-900">3. Accountability & Tools</h4>
-                                                        <p className="text-sm text-slate-600 leading-relaxed">
-                                                            Constructs an <strong>identity-centric accountability pathway</strong>. Converts theory into a practical "toolbox" for policymakers and designers, connecting incident-level harms to evidentiary standards and remedies.
-                                                        </p>
+                                                        <div className="mt-4 pt-4 border-t border-slate-100">
+                                                            <button 
+                                                                onClick={() => setActiveTab('publications')}
+                                                                className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center transition-colors group"
+                                                            >
+                                                                Related Publication (Legal Implications)
+                                                                <span className="ml-1 group-hover:translate-x-0.5 transition-transform"><Icons.ArrowRight /></span>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </section>
