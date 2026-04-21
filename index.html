@@ -68,6 +68,7 @@
         const AcademicPortfolio = () => {
             const [activeTab, setActiveTab] = useState('overview');
             const THESIS_URL = 'https://researchportal.hkust.edu.hk/en/studentTheses/governing-digital-selves-across-the-metaverse-ecosystem-identity-/';
+            const THESIS_PDF_URL = 'https://repository.hkust.edu.hk/ir/bitstream/1783.1-169545/1/1783.1-169545.pdf';
 
             const navigation = [
                 { id: 'overview', label: 'Overview' },
@@ -217,14 +218,14 @@
                                                 <p className="text-lg font-bold text-slate-900 italic">
                                                     "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
                                                 </p>
-                                               <a
-  href={THESIS_URL}
-  target="_blank"
-  rel="noopener noreferrer"
+                                               <button
+  onClick={() => setActiveTab('dissertation')}
+  type="button"
   className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+  aria-label="Jump to Doctoral Dissertation section on this page"
 >
-  Read full dissertation (HKUST Portal) <span className="ml-1">→</span>
-</a>
+  Read full dissertation framework <span className="ml-1">→</span>
+</button>
                                             </section>
 
                                             <section className="grid md:grid-cols-2 gap-4">
@@ -270,7 +271,7 @@
                                                     "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
                                                 </p>
                                         <div className="mt-5 flex flex-col sm:flex-row gap-3">
-  <a
+<a
     href={THESIS_URL}
     target="_blank"
     rel="noopener noreferrer"
@@ -280,11 +281,11 @@
     View Thesis
   </a>
   <a
-    href={THESIS_URL}
+    href={THESIS_PDF_URL}
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
-    aria-label="Download thesis (opens in a new tab)"
+    aria-label="Download thesis PDF (opens in a new tab)"
   >
     Download PDF
   </a>
