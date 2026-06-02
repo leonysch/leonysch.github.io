@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YANG Liang (Leon) - Academic Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YANG Liang (Leon) - Technology Governance Researcher</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,35 +16,54 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        html {
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        section[id] {
+            scroll-margin-top: 96px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .animate-fade-in {
             animation: fadeIn 0.5s ease-out forwards;
         }
-        /* Custom link underline style */
+
         .link-underline {
             text-decoration-line: underline;
-            text-decoration-color: #cbd5e1; /* slate-300 */
+            text-decoration-color: #cbd5e1;
             text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
+            text-underline-offset: 3px;
         }
+
         .link-underline:hover {
-            text-decoration-color: #2563eb; /* blue-600 */
+            text-decoration-color: #2563eb;
             color: #2563eb;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+
+<body class="bg-slate-50 text-slate-800 antialiased">
 
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+        const { useEffect, useState } = React;
 
-        // Icons (Merged from Script 1 and Script 2)
         const Icons = {
             Mail: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
             FileText: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>,
@@ -56,650 +75,1056 @@
             ExternalLink: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>,
             Building2: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>,
             Users: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-            Brain: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>,
             Target: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
             Network: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>,
             ShieldCheck: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>,
-            // Added Icons required for Script 2 features
             Layers: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
             ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         };
 
         const AcademicPortfolio = () => {
-            const [activeTab, setActiveTab] = useState('overview');
+            const [activeSection, setActiveSection] = useState('overview');
+
             const THESIS_URL = 'https://researchportal.hkust.edu.hk/en/studentTheses/governing-digital-selves-across-the-metaverse-ecosystem-identity-/';
             const THESIS_PDF_URL = 'https://repository.hkust.edu.hk/ir/bitstream/1783.1-169545/1/1783.1-169545.pdf';
 
             const navigation = [
-                { id: 'overview', label: 'Overview' },
-                { id: 'dissertation', label: 'Doctoral Dissertation' },
+                { id: 'overview', label: 'Profile' },
+                { id: 'dissertation', label: 'Dissertation' },
                 { id: 'publications', label: 'Publications' },
-                { id: 'impact', label: 'Policy Impact' },
+                { id: 'impact', label: 'Impact' },
                 { id: 'experience', label: 'Experience & Service' },
+                { id: 'publishing', label: 'Publishing Practice' }
             ];
 
+            const scrollToSection = (event, id) => {
+                if (event) event.preventDefault();
+
+                const section = document.getElementById(id);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setActiveSection(id);
+
+                    if (window.history && window.history.replaceState) {
+                        window.history.replaceState(null, '', `#${id}`);
+                    }
+                }
+            };
+
+            useEffect(() => {
+                const sections = navigation
+                    .map((item) => document.getElementById(item.id))
+                    .filter(Boolean);
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        const visibleEntries = entries
+                            .filter((entry) => entry.isIntersecting)
+                            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                        if (visibleEntries.length > 0) {
+                            setActiveSection(visibleEntries[0].target.id);
+                        }
+                    },
+                    {
+                        root: null,
+                        rootMargin: '-25% 0px -60% 0px',
+                        threshold: [0.1, 0.25, 0.5, 0.75]
+                    }
+                );
+
+                sections.forEach((section) => observer.observe(section));
+
+                return () => observer.disconnect();
+            }, []);
+
+            const mobileNavClass = (id) =>
+                `whitespace-nowrap px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                    activeSection === id
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`;
+
+            const desktopNavClass = (id) =>
+                `pb-3 text-sm font-medium border-b-2 transition-colors ${
+                    activeSection === id
+                        ? 'border-blue-600 text-blue-600'
+                        : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
+                }`;
+
+            const sidebarNavClass = (id) =>
+                `block text-sm font-medium transition-colors ${
+                    activeSection === id
+                        ? 'text-blue-700'
+                        : 'text-slate-500 hover:text-blue-700'
+                }`;
+
             return (
-                <div className="min-h-screen bg-slate-50 font-sans text-slate-800 pb-20">
+                <div className="min-h-screen bg-slate-50 font-sans text-slate-800 pb-12">
                     {/* Mobile Navigation */}
-                    <div className="lg:hidden bg-white border-b border-slate-200 sticky top-0 z-50 px-4 py-3 overflow-x-auto shadow-sm">
-                        <div className="flex space-x-4">
+                    <div className="lg:hidden bg-white border-b border-slate-200 sticky top-0 z-50 px-4 py-3 shadow-sm">
+                        <p className="text-sm font-semibold text-slate-900">YANG Liang (Leon)</p>
+                        <nav aria-label="Mobile section navigation" className="mt-2 flex space-x-3 overflow-x-auto pb-1">
                             {navigation.map((item) => (
-                                <button
+                                <a
                                     key={item.id}
-                                    onClick={() => setActiveTab(item.id)}
-                                    className={`whitespace-nowrap px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                                        activeTab === item.id 
-                                            ? 'bg-blue-600 text-white' 
-                                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                                    }`}
+                                    href={`#${item.id}`}
+                                    onClick={(event) => scrollToSection(event, item.id)}
+                                    className={mobileNavClass(item.id)}
                                 >
                                     {item.label}
-                                </button>
+                                </a>
                             ))}
-                        </div>
+                        </nav>
                     </div>
 
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                             
-                            {/* LEFT SIDEBAR: Profile Card (Corrected with Script 1 Assets) */}
-                            <div className="lg:col-span-4 xl:col-span-3">
-                                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sticky top-8">
+                            {/* Left Sidebar */}
+                            <aside className="lg:col-span-4 xl:col-span-3">
+                                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:sticky lg:top-8">
                                     <div className="flex flex-col items-center text-center">
-                                        {/* Real Avatar from Script 1 */}
-                                        <img 
-                                            src="./data/1743604111653.jpeg" 
-                                            alt="Yang Liang" 
+                                        <img
+                                            src="./data/1743604111653.jpeg"
+                                            alt="Portrait of YANG Liang"
                                             className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4"
                                         />
                                         
-                                        <h1 className="text-2xl font-bold text-slate-900">Dr. YANG Liang (Leon)</h1>
+                                        <h1 className="text-2xl font-bold text-slate-900">
+                                            Dr. YANG Liang (Leon)
+                                        </h1>
+
+                                        <p className="mt-2 text-sm font-semibold text-slate-700">
+                                            Technology Governance Researcher
+                                        </p>
+
+                                        <p className="mt-2 text-sm text-slate-500 leading-6">
+                                            Digital identity · Interoperability · Accountability · Emerging digital infrastructures
+                                        </p>
                                         
                                         <div className="mt-4 space-y-1 text-sm text-slate-600">
-                                            <p><a href="https://ais.hkust.edu.hk/" target="_blank" className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2">Academy of Interdisciplinary Studies</a></p>
-                                            <p><a href="https://www.ust.hk/" target="_blank" className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2">Hong Kong University of Science and Technology</a></p>
+                                            <p>
+                                                <a
+                                                    href="https://ais.hkust.edu.hk/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2"
+                                                >
+                                                    Academy of Interdisciplinary Studies
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a
+                                                    href="https://www.ust.hk/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="hover:text-blue-600 underline decoration-slate-300 underline-offset-2"
+                                                >
+                                                    Hong Kong University of Science and Technology
+                                                </a>
+                                            </p>
                                         </div>
 
-                                        {/* Visiting Scholar Badge */}
                                         <div className="mt-6 w-full bg-blue-50 border border-blue-100 rounded-lg p-3 text-left">
                                             <div className="flex items-start gap-2">
-                                                <div className="w-4 h-4 text-blue-700 mt-1 shrink-0"><Icons.Landmark /></div>
+                                                <div className="w-4 h-4 text-blue-700 mt-1 shrink-0">
+                                                    <Icons.Landmark />
+                                                </div>
                                                 <div>
-                                                    <p className="text-xs font-semibold text-blue-700 uppercase">Visiting Scholar (2025)</p>
-                                                    <p className="text-sm text-slate-800 leading-tight mt-1 hover:text-blue-600">
-                                                        <a href="https://www.lcfi.ac.uk/" target="_blank" className="underline decoration-blue-200 underline-offset-2">Leverhulme Centre for the Future of Intelligence (LCFI)</a>
+                                                    <p className="text-xs font-semibold text-blue-700 uppercase">
+                                                        Visiting Scholar, 2025
                                                     </p>
-                                                    <p className="text-xs text-slate-500 mt-0.5 hover:text-blue-600">
-                                                        <a href="https://www.cam.ac.uk/" target="_blank" className="underline decoration-slate-200 underline-offset-2">University of Cambridge</a>
+                                                    <p className="text-sm text-slate-800 leading-tight mt-1">
+                                                        <a
+                                                            href="https://www.lcfi.ac.uk/"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="underline decoration-blue-200 underline-offset-2 hover:text-blue-600"
+                                                        >
+                                                            Leverhulme Centre for the Future of Intelligence
+                                                        </a>
+                                                    </p>
+                                                    <p className="text-xs text-slate-500 mt-0.5">
+                                                        <a
+                                                            href="https://www.cam.ac.uk/"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="underline decoration-slate-200 underline-offset-2 hover:text-blue-600"
+                                                        >
+                                                            University of Cambridge
+                                                        </a>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* Contact & Links (Corrected with Script 1 Link) */}
                                         <div className="mt-6 w-full space-y-3">
-                                            <a href="mailto:lyangbl@connect.ust.hk" className="flex items-center justify-center w-full px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition text-sm font-medium">
-                                                <div className="w-4 h-4 mr-2"><Icons.Mail /></div>
+                                            <a
+                                                href="mailto:lyangbl@connect.ust.hk"
+                                                className="flex items-center justify-center w-full px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition text-sm font-medium"
+                                            >
+                                                <div className="w-4 h-4 mr-2">
+                                                    <Icons.Mail />
+                                                </div>
                                                 Email Me
                                             </a>
-                                            {/* Real PDF Link from Script 1 */}
-                                            <a href="../data/ky-CV.pdf" target="_blank" className="flex items-center justify-center w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition text-sm font-medium">
-                                                <div className="w-4 h-4 mr-2"><Icons.FileText /></div>
+
+                                            <a
+                                                href="../data/ky-CV.pdf"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center w-full px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition text-sm font-medium"
+                                            >
+                                                <div className="w-4 h-4 mr-2">
+                                                    <Icons.FileText />
+                                                </div>
                                                 Download CV (PDF)
                                             </a>
-                                            <p className="text-xs text-slate-400">Last Updated: Oct 2025</p>
+
+                                            <p className="text-xs text-slate-400">
+                                                Last Updated: Jun 2026
+                                            </p>
                                         </div>
 
                                         <div className="mt-6 grid grid-cols-4 gap-2 w-full">
-                                            <a href="https://scholar.google.com/citations?user=UjuKCPcAAAAJ&hl=zh-CN" target="_blank" className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition" title="Google Scholar">
+                                            <a
+                                                href="https://scholar.google.com/citations?user=UjuKCPcAAAAJ&hl=zh-CN"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition"
+                                                title="Google Scholar"
+                                            >
                                                 <Icons.Globe />
-                                                <span className="text-[10px] mt-1">Scholar</span>
+                                                <span className="text-xs mt-1">Scholar</span>
                                             </a>
-                                            <a href="https://www.linkedin.com/in/leonyang2059/" target="_blank" className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition" title="LinkedIn">
+
+                                            <a
+                                                href="https://www.linkedin.com/in/leonyang2059/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition"
+                                                title="LinkedIn"
+                                            >
                                                 <Icons.Linkedin />
-                                                <span className="text-[10px] mt-1">LinkedIn</span>
+                                                <span className="text-xs mt-1">LinkedIn</span>
                                             </a>
-                                            <a href="https://ust-hk.academia.edu/LiangYang" target="_blank" className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition" title="Academia">
+
+                                            <a
+                                                href="https://ust-hk.academia.edu/LiangYang"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition"
+                                                title="Academia"
+                                            >
                                                 <Icons.Book />
-                                                <span className="text-[10px] mt-1">Academia</span>
+                                                <span className="text-xs mt-1">Academia</span>
                                             </a>
-                                            <a href="https://www.researchgate.net/profile/Liang-Yang-71?ev=hdr_xprf" target="_blank" className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition" title="ResearchGate">
+
+                                            <a
+                                                href="https://www.researchgate.net/profile/Liang-Yang-71?ev=hdr_xprf"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex flex-col items-center justify-center p-2 rounded hover:bg-slate-50 text-slate-500 hover:text-blue-600 transition"
+                                                title="ResearchGate"
+                                            >
                                                 <Icons.Book />
-                                                <span className="text-[10px] mt-1">R.Gate</span>
+                                                <span className="text-xs mt-1">R.Gate</span>
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            {/* RIGHT COLUMN: Main Content */}
-                            <div className="lg:col-span-8 xl:col-span-9 space-y-10">
+                                    <nav aria-label="Desktop section navigation" className="hidden lg:block mt-8 pt-6 border-t border-slate-200">
+                                        <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                                            Sections
+                                        </p>
+                                        <div className="space-y-2">
+                                            {navigation.map((item) => (
+                                                <a
+                                                    key={item.id}
+                                                    href={`#${item.id}`}
+                                                    onClick={(event) => scrollToSection(event, item.id)}
+                                                    className={sidebarNavClass(item.id)}
+                                                >
+                                                    {item.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </nav>
+                                </div>
+                            </aside>
+
+                            {/* Main Content */}
+                            <main className="lg:col-span-8 xl:col-span-9 space-y-8">
                                 
-                                {/* Desktop Navigation Tabs */}
-                                <div className="hidden lg:flex border-b border-slate-200 space-x-8">
+                                {/* Desktop Navigation */}
+                                <nav className="hidden lg:flex sticky top-0 z-40 bg-slate-50 border-b border-slate-200 space-x-8 pt-2 backdrop-blur">
                                     {navigation.map((item) => (
-                                        <button
+                                        <a
                                             key={item.id}
-                                            onClick={() => setActiveTab(item.id)}
-                                            className={`pb-4 text-sm font-medium border-b-2 transition-colors ${
-                                                activeTab === item.id 
-                                                    ? 'border-blue-600 text-blue-600' 
-                                                    : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
-                                            }`}
+                                            href={`#${item.id}`}
+                                            onClick={(event) => scrollToSection(event, item.id)}
+                                            className={desktopNavClass(item.id)}
                                         >
                                             {item.label}
-                                        </button>
+                                        </a>
                                     ))}
-                                </div>
+                                </nav>
 
-                                {/* CONTENT SECTIONS */}
-                                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 min-h-[500px]">
-                                    
-                                    {/* OVERVIEW */}
-                                    {activeTab === 'overview' && (
-                                        <div className="space-y-8 animate-fade-in">
-                                            <section>
-                                                <h2 className="text-2xl font-bold text-slate-900 mb-4">About Me</h2>
-                                                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
-                                                    <p>
-                                                        I am a <strong>Technology Governance Reseacher</strong> working at the intersection of AI, immersive technologies (XR), and large‑scale digital infrastructures. I examine how digitally mediated selves are constituted, coordinated, and held accountable, and I develop an <strong>identity‑centric governance framework</strong> that integrates digital identity, interoperability, and accountability (my Doctoral Dissertation). My Three‑Layer Interoperability Model—referred to by UKRI report as the “Yang Model”—was adopted as a core analytical framework for metaverse standardization, reflecting my commitment to policy‑relevant research with institutional impact.
-                                                    </p>
-                                                    <p className="mt-4">
-                                                        Prior to academia, I spent over a decade in the global technology sector. My industry practice includes leading large‑scale 4G network deployments across China and West Africa, and advancing digital‑twin/XR initiatives through cross‑institutional collaboration between a Silicon Valley company and China’s largest state‑owned enterprise. These experiences ground my research in the operational realities of implementation, cross‑border coordination, and institutional complexity.
-                                                    </p>
-                                                     <p className="mt-4">
-                                                        My past collaborations with governments, international organizations, and private sectors have converted theories/principles into tested mechanisms. Next, I aim to scale these approaches and invite partnerships on digital identity, interoperability standards, and emerging‑technology governance. 
-                                                    </p>
+                                {/* Profile */}
+                                <section id="overview" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
+                                        Research Profile
+                                    </p>
+
+                                    <h2 className="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                                        Technology governance for digital identity, interoperability, and accountability
+                                    </h2>
+
+                                    <div className="mt-6 prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+                                        <p>
+                                            I am a <strong>technology governance researcher</strong> working on digital identity, interoperability, accountability, and emerging digital infrastructures. My research examines how digitally mediated selves are formed, represented, transferred, and governed across immersive and platform-based environments.
+                                        </p>
+
+                                        <p>
+                                            My doctoral research at HKUST developed an <strong>identity-centric governance framework</strong> for the metaverse, linking metaverse identity, interoperability, and accountability. Rather than treating identity only as a user account or credential, I study it as a socio-technical object that connects embodiment, data, social relations, economic value, and institutional responsibility.
+                                        </p>
+
+                                        <p>
+                                            Before doctoral research, I worked in global technology and infrastructure settings, including telecommunications, XR, digital twins, and cross-border technology transfer. These experiences make me attentive to implementation: governance models should be analytically clear, institutionally usable, and realistic for policymakers, designers, platforms, and researchers.
+                                        </p>
+
+                                        <p>
+                                            I welcome research conversations and collaborations on digital identity, interoperability standards, metaverse and XR governance, AI-mediated scholarly communication, research integrity, open science, and science policy.
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-8 grid md:grid-cols-2 gap-4">
+                                        <div className="bg-slate-50 rounded-lg p-5 border border-slate-200">
+                                            <h3 className="font-bold text-slate-900 flex items-center mb-2">
+                                                <div className="w-5 h-5 mr-2 text-blue-700">
+                                                    <Icons.Target />
                                                 </div>
-                                            </section>
-
-                                            <section className="bg-slate-50 rounded-lg p-5 border-l-4 border-blue-600">
-                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Doctoral Dissertation (Thesis Defended)</h3>
-                                                <p className="text-lg font-bold text-slate-900 italic">
-                                                    "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
-                                                </p>
-                                               <button
-  onClick={() => setActiveTab('dissertation')}
-  type="button"
-  className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
-  aria-label="Jump to Doctoral Dissertation section on this page"
->
-  Read full dissertation framework <span className="ml-1">→</span>
-</button>
-                                            </section>
-
-                                            <section className="grid md:grid-cols-2 gap-4">
-                                                <a href="https://pure.qub.ac.uk/en/publications/uk-input-to-metaverse-interoperability-amp-standardisation-delive/" target="_blank" className="block group">
-                                                    <div className="bg-blue-50 p-5 rounded-lg border border-blue-100 h-full transition group-hover:border-blue-300 group-hover:shadow-sm">
-                                                        <h3 className="font-bold text-blue-900 flex items-center mb-2">
-                                                            <div className="w-5 h-5 mr-2"><Icons.Globe /></div>
-                                                            International Policy Uptake
-                                                        </h3>
-                                                        <p className="text-sm text-blue-800">
-                                                            The report <em>"UK Input to Metaverse Interoperability & Standardisation"</em> (2025) explicitly cites and adopts the three-layer interoperability model developed in my interoperability work, referring to it as the <strong>"Yang Model"</strong>.
-                                                        </p>
-                                                        <div className="mt-2 text-xs text-blue-600 font-semibold flex items-center">
-                                                            View Report <div className="w-3 h-3 ml-1"><Icons.ExternalLink /></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                
-                                                <a href="https://doi.org/10.1016/j.telpol.2025.102906" target="_blank" className="block group">
-                                                    <div className="bg-amber-50 p-5 rounded-lg border border-amber-100 h-full transition group-hover:border-amber-300 group-hover:shadow-sm">
-                                                        <h3 className="font-bold text-amber-900 flex items-center mb-2">
-                                                            <div className="w-5 h-5 mr-2"><Icons.Award /></div>
-                                                            Academic Recognition
-                                                        </h3>
-                                                        <p className="text-sm text-amber-800">
-                                                            Recipient of the <strong>Best Student Paper Award</strong> at the 24th ITS Biennial Conference; Lead Article in <em>Telecommunications Policy</em>, Issue 3, 2025.
-                                                        </p>
-                                                        <div className="mt-2 text-xs text-amber-700 font-semibold flex items-center">
-                                                            View Article <div className="w-3 h-3 ml-1"><Icons.ExternalLink /></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </section>
+                                                Research orientation
+                                            </h3>
+                                            <p className="text-sm text-slate-700 leading-relaxed">
+                                                I focus on governance problems where identity, technical architecture, institutional accountability, and practical implementation meet.
+                                            </p>
                                         </div>
-                                    )}
 
-                                    {/* DOCTORAL DISSERTATION (Enhanced with Script 2 Logic) */}
-                                    {activeTab === 'dissertation' && (
-                                        <div className="space-y-8 animate-fade-in">
-                                            <section className="border-b border-slate-100 pb-6">
-                                                <h2 className="text-2xl font-bold text-slate-900">Doctoral Dissertation</h2>
-                                                <p className="text-lg text-slate-600 italic mt-2">
-                                                    "Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability"
-                                                </p>
+                                        <div className="bg-slate-50 rounded-lg p-5 border border-slate-200">
+                                            <h3 className="font-bold text-slate-900 flex items-center mb-2">
+                                                <div className="w-5 h-5 mr-2 text-blue-700">
+                                                    <Icons.ShieldCheck />
+                                                </div>
+                                                Practical contribution
+                                            </h3>
+                                            <p className="text-sm text-slate-700 leading-relaxed">
+                                                My work aims to translate conceptual research into frameworks that can support policy dialogue, standardisation discussions, and responsible system design.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-8 bg-slate-50 rounded-lg p-5 border-l-4 border-blue-600">
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">
+                                            Doctoral Dissertation
+                                        </h3>
+                                        <p className="text-lg font-bold text-slate-900 italic">
+                                            “Governing Digital Selves Across the Metaverse Ecosystem: Identity, Interoperability, and Accountability”
+                                        </p>
+                                        <button
+                                            onClick={(event) => scrollToSection(event, 'dissertation')}
+                                            type="button"
+                                            className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                                            aria-label="Jump to Doctoral Dissertation section"
+                                        >
+                                            Read dissertation framework
+                                            <span className="ml-1">→</span>
+                                        </button>
+                                    </div>
+                                </section>
+
+                                {/* Dissertation */}
+                                <section id="dissertation" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <div className="border-b border-slate-100 pb-6">
+                                        <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                                            Doctoral Dissertation
+                                        </p>
+
+                                        <h2 className="mt-3 text-2xl font-bold text-slate-900">
+                                            Governing Digital Selves Across the Metaverse Ecosystem:
+                                            <span className="block mt-1 italic font-semibold text-slate-700">
+                                                Identity, Interoperability, and Accountability
+                                            </span>
+                                        </h2>
+
+                                        <p className="mt-4 text-slate-700 leading-relaxed">
+                                            The dissertation develops an identity-centric governance framework for immersive digital environments. It asks how digital selves can be conceptualized, protected, transferred, and made accountable across interconnected metaverse ecosystems.
+                                        </p>
+
                                         <div className="mt-5 flex flex-col sm:flex-row gap-3">
-<a
-    href={THESIS_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400"
-    aria-label="View thesis on HKUST Research Portal (opens in a new tab)"
-  >
-    View Thesis
-  </a>
-  <a
-    href={THESIS_PDF_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
-    aria-label="Download thesis PDF (opens in a new tab)"
-  >
-    Download PDF
-  </a>
-</div>
-                                            </section>
+                                            <a
+                                                href={THESIS_URL}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                                                aria-label="View thesis on HKUST Research Portal"
+                                            >
+                                                View Thesis
+                                            </a>
 
-                                            {/* 1. Context & Problem */}
-                                            <section className="bg-slate-50 rounded-lg p-6 border border-slate-200">
-                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Context & Core Inquiry</h3>
-                                                <p className="text-slate-700 leading-relaxed mb-4">
-                                                    The metaverse is widely regarded as the next‑generation digital ecosystem. Yet governance agendas remain emergent. Against this backdrop, this dissertation establishes an <strong>identity‑centric normative starting point</strong> for anticipatory governance.
-                                                </p>
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                    <div className="bg-white p-4 rounded border border-slate-100">
-                                                        <h4 className="font-semibold text-slate-900 text-sm mb-1">The Challenge</h4>
-                                                        <p className="text-xs text-slate-600">How embodied presence shifts risk attachment to identity, and how harms to the Digital Self can be translated into workable remedies.</p>
-                                                    </div>
-                                                    <div className="bg-white p-4 rounded border border-slate-100">
-                                                        <h4 className="font-semibold text-slate-900 text-sm mb-1">The Solution</h4>
-                                                        <p className="text-xs text-slate-600">Operationalizing the "Digital Self" as a governance unit that links to and extends beyond real‑world identity.</p>
-                                                    </div>
-                                                </div>
-                                            </section>
-
-                                            {/* 2. Three Clusters of Contributions (Interactive) */}
-                                            <section>
-                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">The Framework: Three Clusters of Contributions</h3>
-                                                <div className="grid md:grid-cols-3 gap-6">
-                                                    {/* Cluster 1 */}
-                                                    <div className="flex flex-col h-full">
-                                                        <div className="flex-1 space-y-3">
-                                                            <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center">
-                                                                <Icons.Target />
-                                                            </div>
-                                                            <h4 className="font-bold text-slate-900">1. Mechanisms & Governance Units</h4>
-                                                            <p className="text-sm text-slate-600 leading-relaxed">
-                                                                Uses <em>self-presence</em> to explain how immersive harm pathways render conventional governance insufficient. Conceptualizes <strong>metaverse identity</strong> as a four‑dimensional unit (representational, data, social, economic) to calibrate protection and innovation.
-                                                            </p>
-                                                        </div>
-                                                        {/* Related Output Link */}
-                                                        <div className="mt-4 pt-4 border-t border-indigo-50">
-                                                            <p className="text-xs font-bold text-slate-400 uppercase mb-2">Related Output</p>
-                                                            <button 
-                                                                onClick={() => setActiveTab('publications')}
-                                                                className="w-full text-left flex items-center justify-between px-3 py-2 bg-indigo-50 hover:bg-indigo-100 rounded text-xs font-semibold text-indigo-700 transition-colors"
-                                                            >
-                                                                <span>Paper: Framing Identity</span>
-                                                                <Icons.ArrowRight />
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Cluster 2 */}
-                                                    <div className="flex flex-col h-full">
-                                                        <div className="flex-1 space-y-3">
-                                                            <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
-                                                                <Icons.Network />
-                                                            </div>
-                                                            <h4 className="font-bold text-slate-900">2. Interoperability & Ecosystems</h4>
-                                                            <p className="text-sm text-slate-600 leading-relaxed">
-                                                                Reconceptualizes interoperability as <strong>identity continuity</strong>. Develops a "normative framework—evidence map—action agenda" paradigm that links identity-anchored constraints to technical trajectories.
-                                                            </p>
-                                                        </div>
-                                                        {/* Related Output Links */}
-                                                        <div className="mt-4 pt-4 border-t border-blue-50 space-y-2">
-                                                            <p className="text-xs font-bold text-slate-400 uppercase mb-2">Related Outputs</p>
-                                                            <button 
-                                                                onClick={() => setActiveTab('publications')}
-                                                                className="w-full text-left flex items-center justify-between px-3 py-2 bg-blue-50 hover:bg-blue-100 rounded text-xs font-semibold text-blue-700 transition-colors"
-                                                            >
-                                                                <span>Paper: Ecosystem Review</span>
-                                                                <Icons.ArrowRight />
-                                                            </button>
-                                                            <button 
-                                                                onClick={() => setActiveTab('impact')}
-                                                                className="w-full text-left flex items-center justify-between px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-xs font-semibold text-white transition-colors shadow-sm"
-                                                            >
-                                                                <span>Impact: The Yang Model</span>
-                                                                <Icons.ArrowRight />
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Cluster 3 */}
-                                                    <div className="flex flex-col h-full">
-                                                        <div className="flex-1 space-y-3">
-                                                            <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center">
-                                                                <Icons.ShieldCheck />
-                                                            </div>
-                                                            <h4 className="font-bold text-slate-900">3. Accountability & Tools</h4>
-                                                            <p className="text-sm text-slate-600 leading-relaxed">
-                                                                Constructs an <strong>identity-centric accountability pathway</strong>. Converts theory into a practical "toolbox" for policymakers and designers, connecting incident-level harms to evidentiary standards and remedies.
-                                                            </p>
-                                                        </div>
-                                                        {/* Related Output Link */}
-                                                        <div className="mt-4 pt-4 border-t border-teal-50">
-                                                            <p className="text-xs font-bold text-slate-400 uppercase mb-2">Related Output</p>
-                                                            <button 
-                                                                onClick={() => setActiveTab('publications')}
-                                                                className="w-full text-left flex items-center justify-between px-3 py-2 bg-teal-50 hover:bg-teal-100 rounded text-xs font-semibold text-teal-700 transition-colors"
-                                                            >
-                                                                <span>Paper: Legal Implications</span>
-                                                                <Icons.ArrowRight />
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-
-                                            {/* 3. Conclusion */}
-                                            <section className="border-t border-slate-100 pt-6">
-                                                <p className="text-slate-700 text-sm italic">
-                                                    "Placing identity at the core of metaverse design and governance constitutes a critical precondition for the metaverse to plausibly evolve into shared socio‑technical infrastructure that supports human well‑being."
-                                                </p>
-                                            </section>
+                                            <a
+                                                href={THESIS_PDF_URL}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                                                aria-label="Download thesis PDF"
+                                            >
+                                                Download PDF
+                                            </a>
                                         </div>
-                                    )}
+                                    </div>
 
+                                    <div className="mt-8 bg-slate-50 rounded-lg p-6 border border-slate-200">
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">
+                                            Context & Core Inquiry
+                                        </h3>
 
-                                    {/* PUBLICATIONS */}
-                                    {activeTab === 'publications' && (
-                                        <div className="space-y-8 animate-fade-in">
-                                            <h2 className="text-2xl font-bold text-slate-900 mb-6">Selected Publications</h2>
-                                            
-                                            <div className="space-y-6">
-                                                {/* Paper 1 */}
-                                                <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
-                                                    <div className="flex flex-wrap gap-2 mb-2">
-                                                        <a href="https://www.sciencedirect.com/journal/telecommunications-policy/vol/49/issue/3" target="_blank" className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded hover:bg-blue-200">Lead Article</a>
-                                                        <a href="https://bm.hkust.edu.hk/news/2024/11/metaverse-study-clinches-first-prize-award" target="_blank" className="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded hover:bg-amber-200">Best Student Paper Award (ITS)</a>
+                                        <p className="text-slate-700 leading-relaxed mb-4">
+                                            The metaverse is often described as a next-generation digital ecosystem, but its governance agenda remains unsettled. The dissertation approaches this uncertainty through identity: how embodied presence changes the meaning of harm, continuity, accountability, and institutional responsibility.
+                                        </p>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="bg-white p-4 rounded border border-slate-100">
+                                                <h4 className="font-semibold text-slate-900 text-sm mb-1">
+                                                    The governance problem
+                                                </h4>
+                                                <p className="text-xs text-slate-600 leading-relaxed">
+                                                    Immersive environments attach social, economic, and psychological stakes to digital representations of the self, making conventional account-based governance insufficient.
+                                                </p>
+                                            </div>
+
+                                            <div className="bg-white p-4 rounded border border-slate-100">
+                                                <h4 className="font-semibold text-slate-900 text-sm mb-1">
+                                                    The analytical move
+                                                </h4>
+                                                <p className="text-xs text-slate-600 leading-relaxed">
+                                                    The dissertation treats the Digital Self as a governance unit that links to, but is not reducible to, real-world identity.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-8">
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">
+                                            Three clusters of contributions
+                                        </h3>
+
+                                        <div className="grid md:grid-cols-3 gap-6">
+                                            <div className="flex flex-col h-full">
+                                                <div className="flex-1 space-y-3">
+                                                    <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center">
+                                                        <Icons.Target />
                                                     </div>
-                                                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
-                                                        <a href="https://doi.org/10.1016/j.telpol.2025.102906" target="_blank" className="flex items-center gap-2">
-                                                            Framing metaverse identity: A multidimensional framework for governing digital selves
-                                                            <div className="w-4 h-4 opacity-50"><Icons.ExternalLink /></div>
-                                                        </a>
-                                                    </h3>
-                                                    <p className="text-slate-700 mt-1"><strong>Liang Yang</strong>, Yan Xu, Pan Hui</p>
-                                                    <p className="text-slate-500 text-sm italic mt-1">Telecommunications Policy, Volume 49, Issue 3 (2025)</p>
+                                                    <h4 className="font-bold text-slate-900">
+                                                        1. Mechanisms & governance units
+                                                    </h4>
+                                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                                        Uses self-presence to explain how immersive harm pathways challenge conventional governance. Conceptualizes metaverse identity as a multidimensional unit involving representational, data, social, and economic dimensions.
+                                                    </p>
                                                 </div>
 
-                                                {/* Paper 2 */}
-                                                <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
-                                                    <div className="flex flex-wrap gap-2 mb-2">
-                                                        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11037581" target="_blank" className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded hover:bg-purple-200">Featured on Cover</a>
+                                                <div className="mt-4 pt-4 border-t border-indigo-50">
+                                                    <p className="text-xs font-bold text-slate-400 uppercase mb-2">
+                                                        Related output
+                                                    </p>
+                                                    <button
+                                                        onClick={(event) => scrollToSection(event, 'publications')}
+                                                        className="w-full text-left flex items-center justify-between px-3 py-2 bg-indigo-50 hover:bg-indigo-100 rounded text-xs font-semibold text-indigo-700 transition-colors"
+                                                    >
+                                                        <span>Paper: Framing Identity</span>
+                                                        <Icons.ArrowRight />
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col h-full">
+                                                <div className="flex-1 space-y-3">
+                                                    <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                                                        <Icons.Network />
                                                     </div>
-                                                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
-                                                        <a href="https://ieeexplore.ieee.org/document/10979319" target="_blank" className="flex items-center gap-2">
-                                                            Interoperability of the Metaverse: A Digital Ecosystem Perspective Review
-                                                            <div className="w-4 h-4 opacity-50"><Icons.ExternalLink /></div>
-                                                        </a>
-                                                    </h3>
-                                                    <p className="text-slate-700 mt-1"><strong>Liang Yang</strong>, Shi-Ting Ni, Yuyang Wang, Ao Yu, Jyh-An Lee, Pan Hui</p>
-                                                    <p className="text-slate-500 text-sm italic mt-1">IEEE Engineering Management Review, 53(3) (2025)</p>
+                                                    <h4 className="font-bold text-slate-900">
+                                                        2. Interoperability & ecosystems
+                                                    </h4>
+                                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                                        Reframes interoperability as identity continuity across digital ecosystems. Develops a layered approach for connecting technical interoperability, institutional coordination, and user-facing identity experience.
+                                                    </p>
                                                 </div>
 
-                                                {/* Paper 3 */}
-                                                <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
-                                                    <div className="flex flex-wrap gap-2 mb-2">
-                                                        <a href="https://webapp3.law.cuhk.edu.hk/conf/20230314/" target="_blank" className="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded hover:bg-slate-200">Metaverse Law Conf. Selection</a>
+                                                <div className="mt-4 pt-4 border-t border-blue-50 space-y-2">
+                                                    <p className="text-xs font-bold text-slate-400 uppercase mb-2">
+                                                        Related outputs
+                                                    </p>
+                                                    <button
+                                                        onClick={(event) => scrollToSection(event, 'publications')}
+                                                        className="w-full text-left flex items-center justify-between px-3 py-2 bg-blue-50 hover:bg-blue-100 rounded text-xs font-semibold text-blue-700 transition-colors"
+                                                    >
+                                                        <span>Paper: Ecosystem Review</span>
+                                                        <Icons.ArrowRight />
+                                                    </button>
+                                                    <button
+                                                        onClick={(event) => scrollToSection(event, 'impact')}
+                                                        className="w-full text-left flex items-center justify-between px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-xs font-semibold text-white transition-colors shadow-sm"
+                                                    >
+                                                        <span>Impact: The Yang Model</span>
+                                                        <Icons.ArrowRight />
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col h-full">
+                                                <div className="flex-1 space-y-3">
+                                                    <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center">
+                                                        <Icons.ShieldCheck />
                                                     </div>
-                                                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
-                                                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4665569" target="_blank" className="flex items-center gap-2">
-                                                            Legal Implications of Self-presence in the Metaverse
-                                                            <div className="w-4 h-4 opacity-50"><Icons.ExternalLink /></div>
-                                                        </a>
-                                                    </h3>
-                                                    <p className="text-slate-700 mt-1">Jyh-An Lee*, <strong>Liang Yang*</strong>, Pan Hui (*Co-first Author)</p>
-                                                    <p className="text-slate-500 text-sm italic mt-1">Media & Arts Law Review, 25(4) (2023)</p>
+                                                    <h4 className="font-bold text-slate-900">
+                                                        3. Accountability & remedies
+                                                    </h4>
+                                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                                        Constructs an identity-centric accountability pathway that connects incident-level harms, evidentiary questions, responsible actors, and possible remedies for harms involving digital selves.
+                                                    </p>
                                                 </div>
 
-                                                {/* Paper 4 */}
-                                                <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
-                                                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
-                                                        <a href="https://dl.acm.org/doi/pdf/10.1145/3551626.3564936" target="_blank" className="flex items-center gap-2">
-                                                            Human-Avatar Interaction in Metaverse: Framework for Full-body Interaction
-                                                            <div className="w-4 h-4 opacity-50"><Icons.ExternalLink /></div>
-                                                        </a>
-                                                    </h3>
-                                                    <p className="text-slate-700 mt-1">Kit-Yung LAM, <strong>Yang Liang</strong>, et al.</p>
-                                                    <p className="text-slate-500 text-sm italic mt-1">ACM Multimedia Asia 2022 (Tokyo, Japan)</p>
+                                                <div className="mt-4 pt-4 border-t border-teal-50">
+                                                    <p className="text-xs font-bold text-slate-400 uppercase mb-2">
+                                                        Related output
+                                                    </p>
+                                                    <button
+                                                        onClick={(event) => scrollToSection(event, 'publications')}
+                                                        className="w-full text-left flex items-center justify-between px-3 py-2 bg-teal-50 hover:bg-teal-100 rounded text-xs font-semibold text-teal-700 transition-colors"
+                                                    >
+                                                        <span>Paper: Legal Implications</span>
+                                                        <Icons.ArrowRight />
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    )}
+                                    </div>
+                                </section>
 
-                                    {/* IMPACT (Enhanced with Script 2 "Yang Model" content) */}
-                                    {activeTab === 'impact' && (
-                                        <div className="space-y-10 animate-fade-in">
-                                            <div className="flex items-baseline justify-between">
-                                                <h2 className="text-2xl font-bold text-slate-900">Policy & Standardisation Impact</h2>
+                                {/* Publications */}
+                                <section id="publications" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                                        Selected Publications
+                                    </h2>
+                                    
+                                    <div className="space-y-6">
+                                        <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
+                                            <div className="flex flex-wrap gap-2 mb-2">
+                                                <a
+                                                    href="https://www.sciencedirect.com/journal/telecommunications-policy/vol/49/issue/3"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded hover:bg-blue-200"
+                                                >
+                                                    Lead Article
+                                                </a>
+                                                <a
+                                                    href="https://bm.hkust.edu.hk/news/2024/11/metaverse-study-clinches-first-prize-award"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded hover:bg-amber-200"
+                                                >
+                                                    Best Student Paper Award, ITS
+                                                </a>
                                             </div>
-                                            
-                                            {/* PRIMARY IMPACT: UKRI REPORT - THE YANG MODEL */}
-                                            <div className="bg-white rounded-xl border-2 border-blue-100 shadow-sm overflow-hidden">
-                                                {/* Header */}
-                                                <div className="bg-gradient-to-r from-blue-50 to-white px-6 py-4 border-b border-blue-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="p-2.5 bg-blue-600 text-white rounded-lg shadow-sm">
-                                                            <Icons.Layers />
-                                                        </div>
-                                                        <div>
-                                                            <h3 className="text-lg font-bold text-slate-900">The "Yang Model"</h3>
-                                                            <p className="text-sm text-blue-700 font-medium">Adopted as the Official Framework for UK National Policy</p>
-                                                        </div>
+
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
+                                                <a
+                                                    href="https://doi.org/10.1016/j.telpol.2025.102906"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    Framing metaverse identity: A multidimensional framework for governing digital selves
+                                                    <div className="w-4 h-4 opacity-50">
+                                                        <Icons.ExternalLink />
                                                     </div>
-                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-                                                        UK Dept. for DCMS / UKRI
-                                                    </span>
+                                                </a>
+                                            </h3>
+
+                                            <p className="text-slate-700 mt-1">
+                                                <strong>Liang Yang</strong>, Yan Xu, Pan Hui
+                                            </p>
+                                            <p className="text-slate-500 text-sm italic mt-1">
+                                                Telecommunications Policy, Volume 49, Issue 3, 2025
+                                            </p>
+                                        </div>
+
+                                        <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
+                                            <div className="flex flex-wrap gap-2 mb-2">
+                                                <a
+                                                    href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11037581"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded hover:bg-purple-200"
+                                                >
+                                                    Featured on Cover
+                                                </a>
+                                            </div>
+
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
+                                                <a
+                                                    href="https://ieeexplore.ieee.org/document/10979319"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    Interoperability of the Metaverse: A Digital Ecosystem Perspective Review
+                                                    <div className="w-4 h-4 opacity-50">
+                                                        <Icons.ExternalLink />
+                                                    </div>
+                                                </a>
+                                            </h3>
+
+                                            <p className="text-slate-700 mt-1">
+                                                <strong>Liang Yang</strong>, Shi-Ting Ni, Yuyang Wang, Ao Yu, Jyh-An Lee, Pan Hui
+                                            </p>
+                                            <p className="text-slate-500 text-sm italic mt-1">
+                                                IEEE Engineering Management Review, 53(3), 2025
+                                            </p>
+                                        </div>
+
+                                        <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
+                                            <div className="flex flex-wrap gap-2 mb-2">
+                                                <a
+                                                    href="https://webapp3.law.cuhk.edu.hk/conf/20230314/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded hover:bg-slate-200"
+                                                >
+                                                    Metaverse Law Conference Selection
+                                                </a>
+                                            </div>
+
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
+                                                <a
+                                                    href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4665569"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    Legal Implications of Self-presence in the Metaverse
+                                                    <div className="w-4 h-4 opacity-50">
+                                                        <Icons.ExternalLink />
+                                                    </div>
+                                                </a>
+                                            </h3>
+
+                                            <p className="text-slate-700 mt-1">
+                                                Jyh-An Lee*, <strong>Liang Yang*</strong>, Pan Hui (*Co-first Author)
+                                            </p>
+                                            <p className="text-slate-500 text-sm italic mt-1">
+                                                Media & Arts Law Review, 25(4), 2023
+                                            </p>
+                                        </div>
+
+                                        <div className="group p-4 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition">
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
+                                                <a
+                                                    href="https://dl.acm.org/doi/pdf/10.1145/3551626.3564936"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    Human-Avatar Interaction in Metaverse: Framework for Full-body Interaction
+                                                    <div className="w-4 h-4 opacity-50">
+                                                        <Icons.ExternalLink />
+                                                    </div>
+                                                </a>
+                                            </h3>
+
+                                            <p className="text-slate-700 mt-1">
+                                                Kit-Yung LAM, <strong>Yang Liang</strong>, et al.
+                                            </p>
+                                            <p className="text-slate-500 text-sm italic mt-1">
+                                                ACM Multimedia Asia 2022, Tokyo, Japan
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                {/* Impact */}
+                                <section id="impact" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <h2 className="text-2xl font-bold text-slate-900">
+                                        Research Impact & Engagement
+                                    </h2>
+
+                                    <p className="mt-4 text-slate-700 leading-relaxed">
+                                        Selected examples below show how my research and research-informed practice have entered policy, standardisation, and industry-facing discussions. I present these as ongoing engagements rather than final claims of impact.
+                                    </p>
+                                    
+                                    <div className="mt-8 bg-white rounded-xl border-2 border-blue-100 shadow-sm overflow-hidden">
+                                        <div className="bg-gradient-to-r from-blue-50 to-white px-6 py-4 border-b border-blue-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-2.5 bg-blue-600 text-white rounded-lg shadow-sm">
+                                                    <Icons.Layers />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-slate-900">
+                                                        The “Yang Model”
+                                                    </h3>
+                                                    <p className="text-sm text-blue-700 font-medium">
+                                                        Policy-facing reference for metaverse interoperability
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+                                                Standardisation discussion
+                                            </span>
+                                        </div>
+
+                                        <div className="p-6 md:p-8 space-y-6">
+                                            <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500 text-slate-700 text-sm leading-relaxed">
+                                                A UK report on metaverse interoperability and standardisation refers to the three-layer interoperability model developed in my work as the <strong>“Yang Model”</strong>, using it as a broad and accessible framework for discussing interoperability layers and standardisation priorities.
+                                            </div>
+
+                                            <div className="grid md:grid-cols-3 gap-4">
+                                                <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                                                    <div className="text-xs font-bold text-slate-400 uppercase mb-1">
+                                                        Conceptual use
+                                                    </div>
+                                                    <p className="text-sm font-semibold text-slate-800">
+                                                        Layered framing
+                                                    </p>
+                                                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                                                        Helps distinguish different levels of interoperability rather than treating interoperability as one technical issue.
+                                                    </p>
                                                 </div>
 
-                                                <div className="p-6 md:p-8 space-y-6">
-                                                    {/* The "Why" Quote */}
-                                                    <div className="bg-blue-50/50 rounded-lg p-4 border-l-4 border-blue-500 italic text-slate-700 text-sm leading-relaxed">
-                                                        "Yang et al's work was selected as the <strong>most useful, broad, and accessible model</strong> for this purpose... referred to here as <strong>The Yang Model</strong>."
-                                                        <div className="mt-2 text-xs text-slate-500 font-semibold not-italic">— UK Input to Metaverse Interoperability & Standardisation (2025), Section 1</div>
+                                                <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                                                    <div className="text-xs font-bold text-slate-400 uppercase mb-1">
+                                                        Standards mapping
+                                                    </div>
+                                                    <p className="text-sm font-semibold text-slate-800">
+                                                        Ecosystem coordination
+                                                    </p>
+                                                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                                                        Supports discussion of how standardisation work may be mapped across technical, platform, and user-facing layers.
+                                                    </p>
+                                                </div>
+
+                                                <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                                                    <div className="text-xs font-bold text-slate-400 uppercase mb-1">
+                                                        Research translation
+                                                    </div>
+                                                    <p className="text-sm font-semibold text-slate-800">
+                                                        Academic-to-policy bridge
+                                                    </p>
+                                                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                                                        Demonstrates how conceptual research can contribute to early policy and standardisation conversations.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="pt-2 flex items-center">
+                                                <a
+                                                    href="https://pure.qub.ac.uk/en/publications/uk-input-to-metaverse-interoperability-amp-standardisation-delive/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+                                                >
+                                                    <span className="mr-2">View report record</span>
+                                                    <Icons.ExternalLink />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-10">
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-5">
+                                            Broader engagement & industry intelligence
+                                        </h3>
+
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div className="bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 transition-colors">
+                                                <div className="flex items-start gap-4">
+                                                    <div className="bg-slate-100 p-3 rounded-full text-slate-600 shrink-0">
+                                                        <Icons.Users />
                                                     </div>
 
-                                                    {/* The 3 Pillars of Impact */}
-                                                    <div className="grid md:grid-cols-3 gap-4">
-                                                        <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                                                            <div className="text-xs font-bold text-slate-400 uppercase mb-1">Section 1: Strategy</div>
-                                                            <p className="text-sm font-semibold text-slate-800">Conceptual Backbone</p>
-                                                            <p className="text-xs text-slate-600 mt-1">The report is structured entirely around the "3-Layered Model" to define interoperability scopes.</p>
-                                                        </div>
-                                                        <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                                                            <div className="text-xs font-bold text-slate-400 uppercase mb-1">Section 3: Application</div>
-                                                            <p className="text-sm font-semibold text-slate-800">Operational Mapping</p>
-                                                            <p className="text-xs text-slate-600 mt-1">Used to map <strong>Metaverse Standards Forum (MSF)</strong> working groups to specific technical layers.</p>
-                                                        </div>
-                                                        <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                                                            <div className="text-xs font-bold text-slate-400 uppercase mb-1">Appendix B: Evidence</div>
-                                                            <p className="text-sm font-semibold text-slate-800">Epistemic Foundation</p>
-                                                            <p className="text-xs text-slate-600 mt-1">The literature review and academic concepts underpinning the UK strategy are "extrapolated" from Yang et al.</p>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    {/* Link */}
-                                                    <div className="pt-2 flex items-center">
-                                                         <a 
-                                                            href="https://pure.qub.ac.uk/en/publications/uk-input-to-metaverse-interoperability-amp-standardisation-delive/" 
-                                                            target="_blank" 
-                                                            rel="noreferrer"
-                                                            className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+                                                    <div>
+                                                        <h4 className="text-base font-bold text-slate-900">
+                                                            International Policy Dialogue
+                                                        </h4>
+                                                        <p className="text-xs font-semibold text-slate-500 uppercase mt-1">
+                                                            INTERPOL Police Science Congress
+                                                        </p>
+                                                        
+                                                        <p className="text-sm text-slate-700 mt-3 leading-relaxed">
+                                                            Participated in expert consultation on <em>“Metaverse: New Frontier of Policing”</em>, contributing to discussions on law enforcement challenges and public-safety questions in virtual environments.
+                                                        </p>
+                                                        
+                                                        <a
+                                                            href="https://www.interpol.int/content/download/20828/file/Metaverse%20-%20a%20law%20enforcement%20perspective.pdf"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center mt-4 text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors"
                                                         >
-                                                            <span className="mr-2">View Official Report Record</span>
-                                                            <Icons.ExternalLink />
+                                                            Reference: INTERPOL Report
+                                                            <span className="ml-1">
+                                                                <Icons.ExternalLink />
+                                                            </span>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            {/* SECONDARY IMPACTS */}
-                                            <div>
-                                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-5">Broader Engagement & Industry Intelligence</h3>
-                                                <div className="grid md:grid-cols-2 gap-6">
-                                                    
-                                                    {/* INTERPOL */}
-                                                    <div className="bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 transition-colors">
-                                                        <div className="flex items-start gap-4">
-                                                            <div className="bg-slate-100 p-3 rounded-full text-slate-600 shrink-0">
-                                                                <Icons.Users />
-                                                            </div>
-                                                            <div>
-                                                                <h4 className="text-base font-bold text-slate-900">International Policy Dialogue</h4>
-                                                                <p className="text-xs font-semibold text-slate-500 uppercase mt-1">INTERPOL Police Science Congress</p>
-                                                                
-                                                                <p className="text-sm text-slate-700 mt-3 leading-relaxed">
-                                                                    Participated in the expert consultation on <em>"Metaverse: New Frontier of Policing."</em> Contributed to high-level discussions regarding law enforcement challenges in virtual environments.
-                                                                </p>
-                                                                
-                                                                <a href="https://www.interpol.int/content/download/20828/file/Metaverse%20-%20a%20law%20enforcement%20perspective.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center mt-4 text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors">
-                                                                    Reference: INTERPOL Report (2024) <span className="ml-1"><Icons.ExternalLink /></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
+                                            <div className="bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 transition-colors">
+                                                <div className="flex items-start gap-4">
+                                                    <div className="bg-slate-100 p-3 rounded-full text-slate-600 shrink-0">
+                                                        <Icons.FileText />
                                                     </div>
 
-                                                    {/* Tsinghua Reports */}
-                                                    <div className="bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 transition-colors">
-                                                        <div className="flex items-start gap-4">
-                                                            <div className="bg-slate-100 p-3 rounded-full text-slate-600 shrink-0">
-                                                                <Icons.FileText />
-                                                            </div>
-                                                            <div>
-                                                                <h4 className="text-base font-bold text-slate-900">Industry Intelligence</h4>
-                                                                <p className="text-xs font-semibold text-slate-500 uppercase mt-1">Tsinghua University New Media Center</p>
-                                                                
-                                                                <p className="text-sm text-slate-700 mt-3 leading-relaxed">
-                                                                    Core contributor to the drafting and analysis of the <em>Metaverse Development Research Report</em> series (Versions 2.0 & 3.0). Provided analysis on industrial ecosystem mapping.
-                                                                </p>
-                                                                
-                                                                <div className="flex gap-3 mt-4">
-                                                                    <a href="http://www.metasinan.com/reporter/detail?news_id=MQjBQDxS" target="_blank" rel="noreferrer" className="inline-flex items-center text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors">
-                                                                        Report 2.0 <span className="ml-1"><Icons.ExternalLink /></span>
-                                                                    </a>
-                                                                    <span className="text-slate-300">|</span>
-                                                                    <a href="http://www.metasinan.com/reporter/detail?news_id=MQzBIDyS" target="_blank" rel="noreferrer" className="inline-flex items-center text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors">
-                                                                        Report 3.0 <span className="ml-1"><Icons.ExternalLink /></span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
+                                                    <div>
+                                                        <h4 className="text-base font-bold text-slate-900">
+                                                            Industry Intelligence
+                                                        </h4>
+                                                        <p className="text-xs font-semibold text-slate-500 uppercase mt-1">
+                                                            Tsinghua University New Media Center
+                                                        </p>
+                                                        
+                                                        <p className="text-sm text-slate-700 mt-3 leading-relaxed">
+                                                            Contributed to drafting and analysis for the <em>Metaverse Development Research Report</em> series, with a focus on industrial ecosystem mapping and development trajectories.
+                                                        </p>
+                                                        
+                                                        <div className="flex gap-3 mt-4">
+                                                            <a
+                                                                href="http://www.metasinan.com/reporter/detail?news_id=MQjBQDxS"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex items-center text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors"
+                                                            >
+                                                                Report 2.0
+                                                                <span className="ml-1">
+                                                                    <Icons.ExternalLink />
+                                                                </span>
+                                                            </a>
+
+                                                            <span className="text-slate-300">|</span>
+
+                                                            <a
+                                                                href="http://www.metasinan.com/reporter/detail?news_id=MQzBIDyS"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-flex items-center text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors"
+                                                            >
+                                                                Report 3.0
+                                                                <span className="ml-1">
+                                                                    <Icons.ExternalLink />
+                                                                </span>
+                                                            </a>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                    )}
+                                    </div>
+                                </section>
 
-                                    {/* EXPERIENCE */}
-                                    {activeTab === 'experience' && (
-                                        <div className="space-y-10 animate-fade-in">
+                                {/* Experience */}
+                                <section id="experience" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <h2 className="text-2xl font-bold text-slate-900 mb-8">
+                                        Academic & Professional Background
+                                    </h2>
 
-                                               {/* Academic Publishing */}
-                                            <section>
-                                                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
-                                                    <div className="p-1.5 bg-blue-100 rounded-md text-blue-700 mr-3"><Icons.Book /></div>
-                                                    Academic Publishing Experience
-                                                </h2>
-                                                <div className="space-y-4 pl-2">
-                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900">Academic Publishing Editor</h3>
-                                                        <p className="text-sm text-slate-600">Multidisciplinary Digital Publishing Institute (MDPI), Switzerland | Nov 2025– Now</p>
-                                                        <ul className="text-slate-700 mt-2 text-sm list-disc pl-4 space-y-1">
-                                                            Contributed to the strategic launch and scope development of international journals (e.g., AI for Engineering, Industries) and coordinated editorial board formation.
-                                                           </ul>
-                                                    </div>
+                                    <div className="space-y-10">
+                                        <section>
+                                            <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                                                <div className="p-1.5 bg-indigo-100 rounded-md text-indigo-700 mr-3">
+                                                    <Icons.Landmark />
                                                 </div>
-                                            </section>
-                                            
-                                            {/* Academic Exchange & Service */}
-                                            <section>
-                                                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
-                                                    <div className="p-1.5 bg-indigo-100 rounded-md text-indigo-700 mr-3"><Icons.Landmark /></div>
-                                                    Academic Exchange & Service
-                                                </h2>
-                                                <div className="space-y-6 pl-2">
-                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900">Leverhulme Centre for the Future of Intelligence (LCFI)</h3>
-                                                        <p className="text-sm text-slate-600">University of Cambridge| Jan – Mar 2025</p>
-                                                        <p className="text-slate-700 mt-1 text-sm">
-                                                            Member of expert discussion group on <a href="https://berggruen.org/news/imaginaries-of-immortality-in-the-age-of-ai-china" target="_blank" className="text-blue-600 hover:underline">"The Imaginaries of Immortality in the Age of AI"</a>.
-                                                        </p>
-                                                    </div>
-                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900">Postgraduate Student Representative</h3>
-                                                        <p className="text-sm text-slate-600">Committee on Postgraduate Studies, HKUST | Jan – Dec 2024</p>
-                                                        <ul className="text-slate-700 mt-2 text-sm list-disc pl-4 space-y-1">
-                                                            Advised on academic standards and curriculum governance, including the review of new postgraduate programmes (e.g., MSc in AI and Entrepreneurship) and regulatory compliance.
-                                                        </ul>
-                                                    </div>
+                                                Academic Exchange & Service
+                                            </h3>
+
+                                            <div className="space-y-6 pl-2">
+                                                <div className="border-l-2 border-slate-200 pl-4 py-1">
+                                                    <h4 className="font-semibold text-slate-900">
+                                                        Leverhulme Centre for the Future of Intelligence
+                                                    </h4>
+                                                    <p className="text-sm text-slate-600">
+                                                        University of Cambridge | Jan – Mar 2025
+                                                    </p>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Visiting scholar and member of the expert discussion group on{' '}
+                                                        <a
+                                                            href="https://berggruen.org/news/imaginaries-of-immortality-in-the-age-of-ai-china"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-blue-600 hover:underline"
+                                                        >
+                                                            “The Imaginaries of Immortality in the Age of AI”
+                                                        </a>.
+                                                    </p>
                                                 </div>
-                                            </section>
 
-                                         
-
-                                            {/* Research Practice */}
-                                            <section>
-                                                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
-                                                    <div className="p-1.5 bg-teal-100 rounded-md text-teal-700 mr-3"><Icons.Users /></div>
-                                                    Research-Informed Practice
-                                                </h2>
-                                                <div className="space-y-4 pl-2">
-                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900"><a href="https://infh.hkust-gz.edu.cn/blog/2022/08/30/mc2-center-for-metaverse-and-computational-creativity/" target="_blank" className="text-blue-600 hover:underline">MC² Lab, HKUST (Guangzhou)</a></h3>
-                                                
-                                                        <p className="text-slate-700 mt-1 text-sm">
-                                                            Participated in proposal development for 3D virtual scenes and digital humans project (Funded: RMB 5 million).
-                                                        </p>
-                                                    </div>
-                                                    <div className="border-l-2 border-slate-200 pl-4 py-1">
-                                                        <h3 className="font-semibold text-slate-900">MetaHKUST Initiative</h3>
-                                                        <p className="text-slate-700 mt-1 text-sm">
-                                                            Involved in applied research for the <a href="https://seng.hkust.edu.hk/news/20220728/hkust-launch-worlds-first-twin-campuses-metaverse" target="_blank" className="text-blue-600 hover:underline">world's first twin campuses metaverse</a>.
-                                                        </p>
-                                                    </div>
+                                                <div className="border-l-2 border-slate-200 pl-4 py-1">
+                                                    <h4 className="font-semibold text-slate-900">
+                                                        Postgraduate Student Representative
+                                                    </h4>
+                                                    <p className="text-sm text-slate-600">
+                                                        Committee on Postgraduate Studies, HKUST | Jan – Dec 2024
+                                                    </p>
+                                                    <ul className="text-slate-700 mt-2 text-sm list-disc pl-4 space-y-1">
+                                                        <li>
+                                                            Advised on academic standards and curriculum governance, including the review of new postgraduate programmes and regulatory compliance.
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </section>
+                                            </div>
+                                        </section>
 
-                                            {/* Industry History */}
-                                            <section>
-                                                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
-                                                    <div className="p-1.5 bg-slate-100 rounded-md text-slate-700 mr-3"><Icons.Building2 /></div>
-                                                    Professional History
-                                                </h2>
-                                                <div className="relative border-l-2 border-slate-200 ml-3 space-y-8">
-                                                    <div className="relative pl-8">
-                                                        <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
-                                                        <h3 className="text-lg font-bold text-slate-900">Director / Deputy General Manager</h3>
-                                                        <p className="text-slate-600 text-sm">China Merchants Group × EON Reality (Silicon Valley) | 2017 – 2020</p>
-                                                        <p className="text-slate-700 mt-1 text-sm">Led cross-border technology transfer projects focusing on XR and digital twins.</p>
-                                                    </div>
-
-                                                    <div className="relative pl-8">
-                                                        <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
-                                                        <h3 className="text-lg font-bold text-slate-900">Co-Founder</h3>
-                                                        <p className="text-slate-600 text-sm">Incubation Home | 2015 – 2017</p>
-                                                        <p className="text-slate-700 mt-1 text-sm">Built database of 1,000+ innovation incubators for policy evaluation.</p>
-                                                    </div>
-
-                                                    <div className="relative pl-8">
-                                                        <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
-                                                        <h3 className="text-lg font-bold text-slate-900">Service Manager (West Africa)</h3>
-                                                        <p className="text-slate-600 text-sm">Huawei Technologies | 2009 – 2014</p>
-                                                        <p className="text-slate-700 mt-1 text-sm">Managed critical 4G infrastructure and service projects (US$70M+) in Ghana.</p>
-                                                    </div>
+                                        <section>
+                                            <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                                                <div className="p-1.5 bg-teal-100 rounded-md text-teal-700 mr-3">
+                                                    <Icons.Users />
                                                 </div>
-                                            </section>
-                                        </div>
-                                    )}
+                                                Research-Informed Practice
+                                            </h3>
 
-                                </div>
-                            </div>
+                                            <div className="space-y-4 pl-2">
+                                                <div className="border-l-2 border-slate-200 pl-4 py-1">
+                                                    <h4 className="font-semibold text-slate-900">
+                                                        <a
+                                                            href="https://infh.hkust-gz.edu.cn/blog/2022/08/30/mc2-center-for-metaverse-and-computational-creativity/"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-blue-600 hover:underline"
+                                                        >
+                                                            MC² Lab, HKUST (Guangzhou)
+                                                        </a>
+                                                    </h4>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Participated in proposal development for 3D virtual scenes and digital humans research projects.
+                                                    </p>
+                                                </div>
+
+                                                <div className="border-l-2 border-slate-200 pl-4 py-1">
+                                                    <h4 className="font-semibold text-slate-900">
+                                                        MetaHKUST Initiative
+                                                    </h4>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Involved in applied research for{' '}
+                                                        <a
+                                                            href="https://seng.hkust.edu.hk/news/20220728/hkust-launch-worlds-first-twin-campuses-metaverse"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-blue-600 hover:underline"
+                                                        >
+                                                            HKUST’s twin-campuses metaverse initiative
+                                                        </a>.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section>
+                                            <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                                                <div className="p-1.5 bg-slate-100 rounded-md text-slate-700 mr-3">
+                                                    <Icons.Building2 />
+                                                </div>
+                                                Professional History
+                                            </h3>
+
+                                            <p className="text-sm text-slate-700 leading-relaxed mb-6">
+                                                My earlier professional experience informs how I approach governance research: with attention to implementation constraints, cross-border coordination, institutional incentives, and the operational realities of technological systems.
+                                            </p>
+
+                                            <div className="relative border-l-2 border-slate-200 ml-3 space-y-8">
+                                                <div className="relative pl-8">
+                                                    <div className="absolute -left-2 top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
+                                                    <h4 className="text-lg font-bold text-slate-900">
+                                                        Director / Deputy General Manager
+                                                    </h4>
+                                                    <p className="text-slate-600 text-sm">
+                                                        China Merchants Group × EON Reality, Silicon Valley | 2017 – 2020
+                                                    </p>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Led cross-border technology transfer projects focusing on XR and digital twins.
+                                                    </p>
+                                                </div>
+
+                                                <div className="relative pl-8">
+                                                    <div className="absolute -left-2 top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
+                                                    <h4 className="text-lg font-bold text-slate-900">
+                                                        Co-Founder
+                                                    </h4>
+                                                    <p className="text-slate-600 text-sm">
+                                                        Incubation Home | 2015 – 2017
+                                                    </p>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Built a database of innovation incubators for policy evaluation and ecosystem analysis.
+                                                    </p>
+                                                </div>
+
+                                                <div className="relative pl-8">
+                                                    <div className="absolute -left-2 top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
+                                                    <h4 className="text-lg font-bold text-slate-900">
+                                                        Service Manager, West Africa
+                                                    </h4>
+                                                    <p className="text-slate-600 text-sm">
+                                                        Huawei Technologies | 2009 – 2014
+                                                    </p>
+                                                    <p className="text-slate-700 mt-1 text-sm leading-relaxed">
+                                                        Managed telecommunications infrastructure and service projects in Ghana.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+
+                                {/* Publishing Practice */}
+                                <section id="publishing" className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 animate-fade-in">
+                                    <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                                        Academic Publishing Practice
+                                    </p>
+
+                                    <h2 className="mt-3 text-2xl font-bold text-slate-900">
+                                        Academic Publishing Editor
+                                    </h2>
+
+                                    <p className="mt-2 text-sm text-slate-600">
+                                        Multidisciplinary Digital Publishing Institute (MDPI), Switzerland | Nov 2025 – Present
+                                    </p>
+
+                                    <div className="mt-5 text-slate-700 leading-relaxed space-y-3">
+                                        <p>
+                                            My publishing practice involves journal development, editorial coordination, and engagement with research-facing publishing workflows. I include this experience as a practice-facing complement to my research, not as the primary identity of this profile.
+                                        </p>
+
+                                        <p>
+                                            This role also informs my emerging research interests in AI-assisted publishing, peer review, research integrity, open science, and science policy.
+                                        </p>
+
+                                        <ul className="list-disc pl-5 text-sm space-y-1">
+                                            <li>
+                                                Contributed to the strategic launch and scope development of international journals, including AI-related engineering and industry-facing research areas.
+                                            </li>
+                                            <li>
+                                                Coordinated editorial board formation and supported communication across authors, editors, reviewers, and publishing stakeholders.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+
+                                <footer className="text-sm text-slate-500 border-t border-slate-200 pt-6">
+                                    <p>
+                                        © 2026 YANG Liang (Leon). Academic profile for research and professional purposes.
+                                    </p>
+                                </footer>
+                            </main>
                         </div>
                     </div>
                 </div>
